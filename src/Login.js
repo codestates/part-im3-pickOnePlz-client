@@ -18,8 +18,8 @@ function Login() {
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
         {/* <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group> 체크박스 부분 사용여부 확인*/}
+              <Form.Check type="checkbox" label="Check me out" />
+            </Form.Group> 체크박스 부분 사용여부 확인*/}
         <Button variant="primary" type="submit">
           Submit
         </Button>
