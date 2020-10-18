@@ -1,11 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import Header from "./Header";
-import Main from "./Main";
-import Login from "./Login";
-import Signup from "./Signup";
 
 import Header from "./Header";
 import Main from "./Main";
