@@ -5,3 +5,23 @@
 .Body {
   border: 1px solid black;
 }
+
+.floatingButton {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  border-color: #0c9;
+  background-color: #0c9;
+  color: #fff;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 1;
+}
+
+.buttonInside {
+  font-size: 30px;
+  font-weight: bolder;
+}
