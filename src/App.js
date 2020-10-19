@@ -14,9 +14,9 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Header />
       <div className="Body">
         <Router>
+          <Header />
           <Switch>
             <div>
               <Route path="/login" component={Login} />
