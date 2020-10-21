@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Header.css"
-import { Link, Router } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Header() {
   // let isLogin = false; 로그인 여부 확인 
