@@ -8,6 +8,7 @@ import Main from "./Main";
 import Login from "./Login";
 import Signup from "./Signup";
 import NewQuestion from "./NewQuestion";
+import Mypage from "./Mypage";
 
 import "./App.css";
 
@@ -22,6 +23,7 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               <Route path="/newQuestion" component={NewQuestion} />
+              <Route path="/mypage" component={Mypage}/>
               <Route exact path="/" component={Main} />
             </div>
           </Switch>
