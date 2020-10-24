@@ -2,8 +2,8 @@
 
 import React from "react";
 import { connect } from "react-redux";
-import { loginRequest } from "../actions/authentication";
-import { Login } from "../components";
+import { loginRequest } from "../_actions/authentication";
+import { Login } from "../_components";
 
 // function LoginContainer(props) {
 //   // console.log("props.status : ", props.status); // 여기서는 Waiting Success로 잘 나온다

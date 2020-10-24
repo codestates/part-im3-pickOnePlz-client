@@ -2,8 +2,8 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { registerRequest } from "../actions/authentication";
-import { Signup } from "../components";
+import { registerRequest } from "../_actions/authentication";
+import { Signup } from "../_components";
 
 class SignupContainer extends Component {
   /*  thunk 메소드를 실행하는 메소드인 handleRegister 를 정의
