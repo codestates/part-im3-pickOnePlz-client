@@ -5,27 +5,33 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./App.css";
 
-import Header from "./Header";
-import Main from "./Main";
-// import Container, { SignupContainer } from "./containers";
+// import {
+//   SignupContainer,
+//   LoginContainer,
+//   HeaderContainer,
+//   MainContainer,
+//   MypageContainer,
+//   NewQuestionContainer,
+// } from "./_containers";
 
-import { SignupContainer, LoginContainer } from "./containers";
-import NewQuestion from "./NewQuestion";
-import Mypage from "./Mypage";
+import Container from "./_containers";
 
 function App() {
   return (
     <div className="App">
       <div className="Body">
         <Router>
-          <Header />
+          <Container.HeaderContainer />
           <Switch>
             <div>
-              <Route path="/login" component={LoginContainer} />
-              <Route path="/signup" component={SignupContainer} />
-              <Route path="/newQuestion" component={NewQuestion} />
-              <Route path="/mypage" component={Mypage} />
-              <Route exact path="/" component={Main} />
+              <Route path="/login" component={Container.LoginContainer} />
+              <Route path="/signup" component={Container.SignupContainer} />
+              <Route
+                path="/newQuestion"
+                component={Container.NewQuestionContainer}
+              />
+              <Route path="/mypage" component={Container.MypageContainer} />
+              <Route exact path="/" component={Container.MainContainer} />
             </div>
           </Switch>
           <div>

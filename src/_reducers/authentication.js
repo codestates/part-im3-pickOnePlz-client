@@ -1,6 +1,6 @@
 // 리듀서 : dispatch 함수로 부터 전달받은 action 객체의 type 값에 따라, state 를 변경하는 함수입니다.
 
-import * as types from "../actions/ActionTypes";
+import * as types from "../_actions/ActionTypes";
 
 const initialState = {
   login: {
