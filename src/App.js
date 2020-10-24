@@ -11,6 +11,7 @@ import Login from "./Login";
 // import Container, { SignupContainer } from "./containers";
 import { SignupContainer } from "./containers";
 import NewQuestion from "./NewQuestion";
+import Mypage from "./Mypage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/signup" component={SignupContainer} />
               <Route path="/newQuestion" component={NewQuestion} />
+              <Route path="/mypage" component={Mypage}/>
               <Route exact path="/" component={Main} />
             </div>
           </Switch>
