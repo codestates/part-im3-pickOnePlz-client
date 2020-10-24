@@ -3,14 +3,15 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import "./App.css";
+
 import Header from "./Header";
 import Main from "./Main";
 import Login from "./Login";
-import Signup from "./Signup";
+// import Container, { SignupContainer } from "./containers";
+import { SignupContainer } from "./containers";
 import NewQuestion from "./NewQuestion";
 import Mypage from "./Mypage";
-
-import "./App.css";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Switch>
             <div>
               <Route path="/login" component={Login} />
-              <Route path="/signup" component={Signup} />
+              <Route path="/signup" component={SignupContainer} />
               <Route path="/newQuestion" component={NewQuestion} />
               <Route path="/mypage" component={Mypage}/>
               <Route exact path="/" component={Main} />
