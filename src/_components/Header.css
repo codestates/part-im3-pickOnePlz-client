@@ -1,0 +1,14 @@
+.Header {
+  border: 1px solid black;
+  font-size: 25px;
+  float:  center;
+}
+.login{
+  font-size: medium;
+}
+.signup{
+  font-size: medium;
+}
+.slash{
+  font-size: medium;
+}
