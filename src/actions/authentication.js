@@ -5,6 +5,9 @@ import {
   AUTH_REGISTER,
   AUTH_REGISTER_SUCCESS,
   AUTH_REGISTER_FAILURE,
+  AUTH_LOGIN,
+  AUTH_LOGIN_SUCCESS,
+  AUTH_LOGIN_FAILURE,
 } from "./ActionTypes";
 
 /* 디스패치 (dispatch)
@@ -65,6 +68,53 @@ export function registerFailure(error) {
   return {
     type: AUTH_REGISTER_FAILURE,
     error,
+  };
+}
+
+// -------------------------------------------------------------------------------------
+
+/* LOGIN */
+export function loginRequest(email, password) {
+  return (dispatch) => {
+    // Inform Login API is starting
+    dispatch(login());
+
+    // API REQUEST
+    return axios
+      .post(
+        "http://localhost:5000/users/login",
+        { email, password },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        // SUCCEED
+        dispatch(loginSuccess(email));
+        console.log("response : ", response);
+        return response;
+      })
+      .catch((error) => {
+        // FAILED
+        dispatch(loginFailure());
+      });
+  };
+}
+
+export function login() {
+  return {
+    type: AUTH_LOGIN,
+  };
+}
+
+export function loginSuccess(email) {
+  return {
+    type: AUTH_LOGIN_SUCCESS,
+    email,
+  };
+}
+
+export function loginFailure() {
+  return {
+    type: AUTH_LOGIN_FAILURE,
   };
 }
 

@@ -7,9 +7,9 @@ import "./App.css";
 
 import Header from "./Header";
 import Main from "./Main";
-import Login from "./Login";
 // import Container, { SignupContainer } from "./containers";
-import { SignupContainer } from "./containers";
+
+import { SignupContainer, LoginContainer } from "./containers";
 import NewQuestion from "./NewQuestion";
 import Mypage from "./Mypage";
 
@@ -21,10 +21,10 @@ function App() {
           <Header />
           <Switch>
             <div>
-              <Route path="/login" component={Login} />
+              <Route path="/login" component={LoginContainer} />
               <Route path="/signup" component={SignupContainer} />
               <Route path="/newQuestion" component={NewQuestion} />
-              <Route path="/mypage" component={Mypage}/>
+              <Route path="/mypage" component={Mypage} />
               <Route exact path="/" component={Main} />
             </div>
           </Switch>
