@@ -26,7 +26,7 @@ import {
 */
 
 /* REGISTER */
-export function registerRequest(username, password) {
+export function registerRequest(email, password) {
   return (dispatch) => {
     // Inform Register API is starting
     dispatch(register());
@@ -34,14 +34,14 @@ export function registerRequest(username, password) {
     return axios
       .post(
         "http://localhost:5000/users/signup",
-        { username, password },
+        { email, password },
         { withCredentials: true }
       )
       .then((response) => {
         dispatch(registerSuccess());
       })
       .catch((error) => {
-        dispatch(registerFailure(error.response.data.code));
+        dispatch(registerFailure(error.response));
       });
   };
 }

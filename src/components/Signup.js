@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-export default function Signup() {
+export default function Signup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -34,12 +34,7 @@ export default function Signup() {
           "비밀번호가 조건에 맞지 않습니다. 8~12글자 사이의 영문 대소문자와 숫자의 조합으로 구성하세요."
         );
       } else {
-        let userInfo = { email: email, password: password };
-        console.log(
-          "나중에 axios post 요청에 넣어서 보내줄 객체의 형태 : ",
-          userInfo
-        );
-        this.props.handleRegister(email, password).then((result) => {
+        props.handleRegister(email, password).then((result) => {
           if (!result) {
             setEmail("");
             setPassword("");

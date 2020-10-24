@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { registerRequest } from "../actions/authentication";
-import Signup from "../components";
+import { Signup } from "../components";
 
 // class SignupContainer extends Component {
 //   /*  thunk 메소드를 실행하는 메소드인 handleRegister 를 정의
@@ -94,10 +94,10 @@ function SignupContainer(props) {
         return true;
       } else {
         /*  ERROR CODES:
-          1: BAD USERNAME
-          2: BAD PASSWORD
-          3: USERNAME EXISTS
-        */
+        1: BAD USERNAME
+        2: BAD PASSWORD
+        3: USERNAME EXISTS
+      */
         let errorMessage = [
           "Invalid Username",
           "Password is too short",
@@ -131,4 +131,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+// export default SignupContainer;
 export default connect(mapStateToProps, mapDispatchToProps)(SignupContainer);

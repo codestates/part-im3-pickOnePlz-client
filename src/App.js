@@ -8,8 +8,8 @@ import "./App.css";
 import Header from "./Header";
 import Main from "./Main";
 import Login from "./Login";
-// import Signup from "./components/Signup";
-import SignupContainer from "./containers";
+// import Container, { SignupContainer } from "./containers";
+import { SignupContainer } from "./containers";
 import NewQuestion from "./NewQuestion";
 
 function App() {
