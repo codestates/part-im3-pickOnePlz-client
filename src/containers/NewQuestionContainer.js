@@ -1,8 +1,8 @@
-import React from 'react';
-import NewQuestion from '../components/NewQuestion';
+import React from "react";
+import NewQuestion from "../components/NewQuestion";
 
 const NewQuestionContainer = () => {
-    return <NewQuestion />
-}
+  return <NewQuestion />;
+};
 
 export default NewQuestionContainer;
