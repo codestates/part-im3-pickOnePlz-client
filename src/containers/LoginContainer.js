@@ -1,13 +1,15 @@
 import React, { useCallback } from "react";
 // 상태 조회는 useSelector, 액션 생성은 useDispatch
 import { useSelector, useDispatch } from "react-redux";
+import { instanceOf } from "prop-types";
+import { withCookies, Cookies } from "react-cookie";
 
 import axios from "axios";
 
 import Login from "../components/Login";
 import { loginStart, loginSuccess, loginFailure } from "../modules/loginLogout";
 
-const LoginContainer = ({ history }) => {
+const LoginContainer = ({ history, cookies }) => {
   const state = useSelector(
     (state) =>
       // useSelector : redux store 안의 값들을 읽어온다. (selector function 을 전달하여, Context에 포함된 state 를 가져올 수 있다.)
@@ -27,8 +29,9 @@ const LoginContainer = ({ history }) => {
         { withCredentials: true }
       )
       .then((response) => {
-        // console.log("response : ", response);
-        dispatch(loginSuccess(email));
+        let loggedInUser = cookies.get("session_id");
+
+        dispatch(loginSuccess(loggedInUser));
         // console.log("쿠키 : ", JSON.parse(document.cookie));
         // // create session data
         // let loginData = {
@@ -56,4 +59,8 @@ const LoginContainer = ({ history }) => {
   );
 };
 
-export default LoginContainer;
+LoginContainer.propTypes = {
+  cookies: instanceOf(Cookies).isRequired,
+};
+
+export default withCookies(LoginContainer);
