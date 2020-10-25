@@ -12,10 +12,10 @@ export function loginStart() {
   };
 }
 
-export function loginSuccess(email) {
+export function loginSuccess(userId) {
   return {
     type: AUTH_LOGIN_SUCCESS,
-    email,
+    userId,
   };
 }
 
@@ -61,7 +61,7 @@ export default function loginLogout(state = initialState, action) {
         status: {
           ...state.status,
           isLoggedIn: true,
-          currentUser: action.username,
+          currentUser: action.userId,
         },
       };
     case AUTH_LOGIN_FAILURE:

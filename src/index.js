@@ -8,18 +8,29 @@ import { Provider } from "react-redux";
 import reducers from "./modules";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { CookiesProvider } from "react-cookie"; // 쿠키에서 값을 받아오기 위함 (session_id=2 등에서, 2를 받아오기 위해서)
+import { composeWithDevTools } from "redux-devtools-extension"; // devtool에서 보다 깔끔하게 store(state)를 확인하기 위함.
+
+import { persistStore } from "redux-persist"; // 새로고침을 하면 store(state)가 날아가는데,
+import { PersistGate } from "redux-persist/integration/react"; // 이것을 localStorage에 저장한 뒤 불러오기 위함.
 
 const loggerMiddleware = createLogger();
 
 const store = createStore(
   reducers,
-  applyMiddleware(thunkMiddleware, loggerMiddleware)
+  composeWithDevTools(applyMiddleware(thunkMiddleware, loggerMiddleware))
 );
+
+const persistor = persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <CookiesProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
+      </CookiesProvider>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")
