@@ -27,9 +27,7 @@ const HeaderContainer = ({ history }) => {
       });
   };
 
-  return (
-    <Header isLoggedIn={state.status.isLoggedIn} handleLogout={handleLogout} />
-  );
+  return <Header handleLogout={handleLogout} />;
 };
 
 export default HeaderContainer;

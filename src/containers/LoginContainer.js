@@ -27,6 +27,7 @@ const LoginContainer = ({ history }) => {
         { withCredentials: true }
       )
       .then((response) => {
+        // console.log("response : ", response);
         dispatch(loginSuccess(email));
         // console.log("쿠키 : ", JSON.parse(document.cookie));
         // // create session data

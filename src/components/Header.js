@@ -36,7 +36,7 @@ function Header(props) {
 
   let currentView;
 
-  if (props.isLoggedIn === false) {
+  if (document.cookie === "") {
     currentView = loginSignupView;
   } else {
     currentView = logoutView;
