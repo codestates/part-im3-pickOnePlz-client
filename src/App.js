@@ -10,7 +10,7 @@ import {
   MainContainer,
   MypageContainer,
   NewQuestionContainer,
-} from './containers';
+} from "./containers";
 
 import "./App.css";
 
