@@ -39,7 +39,7 @@ const initialState = {
   status: {
     valid: false,
     isLoggedIn: false,
-    currentUser: "",
+    currentUser: null,
   },
 };
 
@@ -77,7 +77,7 @@ export default function loginLogout(state = initialState, action) {
         status: {
           ...state.status,
           isLoggedIn: false,
-          currentUser: "",
+          currentUser: null,
         },
       };
 

@@ -29,7 +29,7 @@ const LoginContainer = ({ history, cookies }) => {
         { withCredentials: true }
       )
       .then((response) => {
-        let loggedInUser = cookies.get("session_id");
+        let loggedInUser = Number(cookies.get("session_id"));
 
         dispatch(loginSuccess(loggedInUser));
         // console.log("쿠키 : ", JSON.parse(document.cookie));
