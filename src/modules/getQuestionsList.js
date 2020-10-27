@@ -3,6 +3,10 @@ export const QUESTION_LIST_START = "QUESTION_LIST_START";
 export const QUESTION_LIST_SUCCESS = "QUESTION_LIST_SUCCESS";
 export const QUESTION_LIST_FAILURE = "QUESTION_LIST_FAILURE";
 
+export const QUESTION_REMOVE_START = "QUESTION_REMOVE_START";
+export const QUESTION_REMOVE_SUCCESS = "QUESTION_REMOVE_SUCCESS";
+export const QUESTION_REMOVE_FAILURE = "QUESTION_REMOVE_FAILURE";
+
 /* 2. 액션생성자 함수 : 액션 객체(action 객체의 type 값은 "QUESTION_LIST_START" 등등)를 리턴합니다. */
 export function questionListStart() {
   return {
@@ -26,6 +30,27 @@ export function questionListFailure() {
   };
 }
 
+export function questionRemoveStart() {
+  return {
+    type: QUESTION_REMOVE_START,
+  };
+}
+
+export function questionRemoveSuccess(index) {
+  // 지워진 값의 인덱스를 서버에서 달라고 해야 하나? 클라이언트에서 그냥 알아서 잡아야 하나?
+  return {
+    type: QUESTION_REMOVE_SUCCESS,
+    index,
+  };
+}
+
+export function questionRemoveFailure(error) {
+  return {
+    type: QUESTION_REMOVE_FAILURE,
+    error,
+  };
+}
+
 /* 3. initialState 및 reducer 함수 */
 const initialState = {
   // post: {
@@ -41,10 +66,10 @@ const initialState = {
   //   status: "INIT",
   //   error: -1,
   // },
-  // remove: {
-  //   status: "INIT",
-  //   error: -1,
-  // },
+  remove: {
+    status: "INIT",
+    error: -1,
+  },
   // star: {
   //   status: "INIT",
   //   error: -1,
@@ -53,6 +78,7 @@ const initialState = {
 
 export default function getQuestionsList(state = initialState, action) {
   switch (action.type) {
+    /* get all questions list */
     case QUESTION_LIST_START:
       return {
         ...state,
@@ -109,6 +135,41 @@ export default function getQuestionsList(state = initialState, action) {
           status: "FAILURE",
         },
       };
+
+    /* delete one question */
+    case QUESTION_REMOVE_START:
+      return {
+        ...state,
+        remove: {
+          ...state.remove,
+          status: "WAITING",
+          error: -1,
+        },
+      };
+    case QUESTION_REMOVE_SUCCESS:
+      let removeBefore = state.list.data.slice(0, action.index);
+      let removeAfter = state.list.data.slice(action.index + 1);
+      return {
+        ...state,
+        remove: {
+          ...state.remove,
+          status: "SUCCESS",
+        },
+        list: {
+          ...state.list,
+          data: [...removeBefore, ...removeAfter],
+        },
+      };
+    case QUESTION_REMOVE_FAILURE:
+      return {
+        ...state,
+        remove: {
+          ...state.remove,
+          status: "FAILURE",
+          error: action.error,
+        },
+      };
+
     default:
       return state;
   }
