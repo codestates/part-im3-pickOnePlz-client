@@ -10,8 +10,10 @@ function Login(props) {
     switch (e.target.name) {
       case "email":
         setEmail(e.target.value);
+        return;
       case "password":
         setPassword(e.target.value);
+        return;
       default:
         return;
     }

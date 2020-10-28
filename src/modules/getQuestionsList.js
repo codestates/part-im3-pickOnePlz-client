@@ -88,6 +88,15 @@ export default function getQuestionsList(state = initialState, action) {
         },
       };
     case QUESTION_LIST_SUCCESS:
+      return {
+        ...state,
+        list: {
+          ...state.list,
+          status: "SUCCESS",
+          data: action.data,
+        },
+      };
+    /*
       if (action.isInitial) {
         return {
           ...state,
@@ -127,6 +136,8 @@ export default function getQuestionsList(state = initialState, action) {
           };
         }
       }
+
+      */
     case QUESTION_LIST_FAILURE:
       return {
         ...state,
