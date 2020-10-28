@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import {
-  userInfoStart,
-  userInfoSuccess,
-  userInfoFailure,
+  getUserInfoStart,
+  getUserInfoSuccess,
+  getUserInfoFailure,
+  updateUerInfoStart,
+  updateUserInfoSuccess,
+  updateUserInfoFailure,
 } from "../modules/handleUserInfo";
 
 import axios from "axios";
@@ -25,10 +29,12 @@ const MyPageContainer = () => {
     []
   );
 
+  const history = useHistory();
+
   const dispatch = useDispatch();
 
   const getUserInfo = (currentUserId) => {
-    dispatch(userInfoStart());
+    dispatch(getUserInfoStart());
 
     return axios
       .get(
@@ -40,10 +46,44 @@ const MyPageContainer = () => {
       )
       .then((userInfo) => {
         console.log("userInfo.data : ", userInfo.data); // 잘 받아온다
-        dispatch(userInfoSuccess(userInfo.data));
+        dispatch(getUserInfoSuccess(userInfo.data));
+        history.push("/mypage");
       })
       .catch((error) => {
-        dispatch(userInfoFailure());
+        dispatch(getUserInfoFailure());
+      });
+  };
+
+  // 문제점 1 : 닉네임을 바꾸고 싶은 경우와 패스워드를 바꾸고 싶은 경우를 별도로 고려해야 한다.
+  // 지금은 하나의 함수를 공유하기 때문에, 서버에서 닉네임을 바꿀건지를 첫번째 분기로 잡고 있어서,
+  // 닉네임값이 주어지면 패스워드변경은 적용해 주지 않고 있다.
+  const updateUserInfo = (currentUser, nickname, password, newPassword) => {
+    dispatch(updateUerInfoStart());
+
+    return axios
+      .put(
+        `http://localhost:5000/users/${currentUser}`,
+        {
+          id: currentUser,
+          nickname: nickname,
+          password: password,
+          newPassword: newPassword,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((response) => {
+        dispatch(updateUserInfoSuccess());
+        console.log("response.data : ", response.data);
+        // alert("사용자 정보가 성공적으로 변경되었습니다.");
+        history.push("/mypage");
+        // 개선점 2 : 리디렉트가 깔끔하지 않고, 정보변경 후에 입력창의 값을 지우고 싶다.
+        // alert이 없으면 닉네임은 변경된 값이 곧바로 적용되어 렌더링되지 않고 있음 (변경 자체는 잘 된다.)
+      })
+      .catch((error) => {
+        console.log("error : ", error);
+        dispatch(updateUserInfoFailure());
       });
   };
 
@@ -52,15 +92,15 @@ const MyPageContainer = () => {
   }, []);
 
   let userInfo = userInfoState.userInfo.userData;
+  console.log("userInfo : ", userInfo);
 
   return (
     <Mypage
       currentUser={loginState.status.currentUser}
       nickname={userInfo.nickname}
-      // 닉네임수정 함수
-      // 비밀번호수정 함수
+      updateUserInfo={updateUserInfo}
     />
-  ); // 메인페이지로 가는 버튼 하나 필요할 듯?
+  );
 };
 
 export default MyPageContainer;
