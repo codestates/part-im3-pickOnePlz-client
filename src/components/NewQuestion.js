@@ -12,6 +12,17 @@ function NewQuestion({ onSubmit }) {
   const [firstAnswer, setFirstAnswer] = useState('');
   const [secondAnswer, setSecondAnswer] = useState('');
 
+  const postData = {
+    title: title,
+    answers: [{
+      message: firstAnswer
+    },
+    {
+      message: secondAnswer
+    }],
+    userId: currentUser
+  }
+
   const inputValidation = () => {
     if(title===''||firstAnswer===''||secondAnswer===''){
       alert("정보를 입력하세요");
@@ -97,16 +108,7 @@ function NewQuestion({ onSubmit }) {
       <div>
           <Button className="inputButton" variant="primary" onClick={()=>{
             if(inputValidation()){
-              onSubmit({
-                title: title,
-                answers: [{
-                  message: firstAnswer
-                },
-                {
-                  message: secondAnswer
-                }],
-                userId: currentUser
-              });
+              onSubmit(postData);
             }
           }}>
             골라주세요!!!

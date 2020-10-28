@@ -1,9 +1,12 @@
 import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 function Header(props) {
   // let isLogin = false; 로그인 여부 확인 (아직 못받아왔음)
+
+  const history = useHistory();
 
   const postLogoutReq = () => {
     props.handleLogout();
@@ -45,7 +48,7 @@ function Header(props) {
   return (
     <div>
       <div className="Header">
-        하나만 골라줘
+        <a href="#" onClick={()=>{history.push("/")}}>하나만 골라줘</a>
         {currentView}
       </div>
     </div>
