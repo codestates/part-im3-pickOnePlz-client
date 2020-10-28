@@ -75,12 +75,11 @@ const MainContainer = ({ history }) => {
         }
       )
       .then((response) => {
-        // console.log("response : ", response.data); // 배열이 매번 다른 순서로 리턴되고 있다. 서버 문제인 듯?
         dispatch(questionRemoveSuccess(index));
         history.push("/");
       })
       .catch((error) => {
-        dispatch(questionRemoveFailure(error.response.data.code));
+        dispatch(questionRemoveFailure());
       });
   };
 
@@ -88,18 +87,12 @@ const MainContainer = ({ history }) => {
     getAllQuestions();
   }, []);
 
-  // useEffect(() => {
-  //   deleteQuestion();
-  // }, []);
-
   let questionsList = questionState.list.data;
-
+  
   const mapToComponents = (data) => {
-    // console.log("data : ", data);
     // map 메소드의 첫 번째 인자는 콜백함수이며 콜백함수에 들어오는 인자는 배열의 원소, 인덱스, (배열 전체) 입니다.
     // map 메소드는 원래 배열과 같은길이의 배열을 리턴하며 각 원소는 콜백함수의 리턴값이 됩니다.
     return data.map((question, index) => {
-      // console.log("userId : ", question.userId);
       return (
         // // 따라서, 컴포넌트 매핑의 결과물은 <Memo ... /> 컴포넌트의 배열입니다. (길이는 매핑의 인자로 들어간 data 와 같음)
         <Main
