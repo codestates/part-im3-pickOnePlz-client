@@ -14,6 +14,7 @@ import axios from "axios";
 import Main from "../components/Main";
 
 const MainContainer = ({ history }) => {
+  const { currentUser } = useSelector(state => state.loginLogout.status);
   // MainContainer 이거 이름 별로인 듯.
   const questionState = useSelector(
     (state) =>
@@ -28,6 +29,14 @@ const MainContainer = ({ history }) => {
       state.loginLogout, // reducer 함수를 넣어줘야 하는 듯
     []
   );
+  const votingQuestion = async(_questionId, _answerId) => {
+    const setData = {userId: currentUser, questionId: _questionId, answerId: _answerId }
+    const response = await axios.post("http://localhost:5000/votes", setData, {withCredentials: true});
+    if(response.status===201){
+      alert(response.data);
+      getAllQuestions();
+    }
+  } 
 
   const dispatch = useDispatch();
 
@@ -79,6 +88,7 @@ const MainContainer = ({ history }) => {
   }, []);
 
   let questionsList = questionState.list.data;
+  
   const mapToComponents = (data) => {
     // map 메소드의 첫 번째 인자는 콜백함수이며 콜백함수에 들어오는 인자는 배열의 원소, 인덱스, (배열 전체) 입니다.
     // map 메소드는 원래 배열과 같은길이의 배열을 리턴하며 각 원소는 콜백함수의 리턴값이 됩니다.
@@ -95,6 +105,7 @@ const MainContainer = ({ history }) => {
           answer_2={question.Answers[1]}
           question={question}
           deleteQuestion={deleteQuestion}
+          votingQuestion={votingQuestion}
           currentUser={loginState.status.currentUser}
           // ownership={memo.writer === this.props.currentUser} // 변형 필요 : 로그인한 사람의 것인지 구별할 때 필요할 듯?
         />

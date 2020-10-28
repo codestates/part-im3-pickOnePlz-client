@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Main.css";
 
 export default function Main(props) {
   // Main 이거 이름 별로인 듯.
-
   const handleDeleteReq = () => {
     if (props.currentUser === null) {
       console.log("로그인이 되어있지 않습니다.");
@@ -28,9 +27,27 @@ export default function Main(props) {
     <div className="eachQuestion__mainPage">
       <div className="questionTitle__mainPage">{props.title}</div>
       <div className="allAnswers__mainPage">
-        <div className="answer__mainPage">{props.answer_1.message}</div>
+        <div className="answer__mainPage">
+          <div>{props.answer_1.message}</div>
+          <button onClick={()=>{
+            props.votingQuestion(props.questionId, props.answer_1.id)
+            }}>
+            투표
+            </button>
+          <div>투표수</div>
+          <div>{props.answer_1.votingCount}</div>
+        </div>
         <div style={{ display: "inline-block", margin: "5px" }}>vs</div>
-        <div className="answer__mainPage">{props.answer_2.message}</div>
+        <div className="answer__mainPage">
+          <div>{props.answer_2.message}</div>
+          <button onClick={()=>{
+            props.votingQuestion(props.questionId, props.answer_2.id)
+            }}>
+            투표
+            </button>
+          <div>투표수</div>
+          <div>{props.answer_2.votingCount}</div>
+        </div>
       </div>
       <div className="description__mainPage">description(optional-미구현)</div>
       {props.currentUser === props.userId ? deleteAndUpdateButton : ""}
