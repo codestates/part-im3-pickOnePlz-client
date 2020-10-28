@@ -21,6 +21,7 @@ const MainContainer = ({ history }) => {
       state.getQuestionsList, // reducer 함수를 넣어줘야 하는 듯
     []
   );
+  console.log("questionState : ", questionState);
 
   const loginState = useSelector(
     (state) =>
@@ -80,13 +81,14 @@ const MainContainer = ({ history }) => {
     getAllQuestions();
   }, []);
 
-  useEffect(() => {
-    deleteQuestion();
-  }, []);
+  // useEffect(() => {
+  //   deleteQuestion();
+  // }, []);
 
   let questionsList = questionState.list.data;
-
+  console.log("questionsList : ", questionsList);
   const mapToComponents = (data) => {
+    // console.log("data : ", data);
     // map 메소드의 첫 번째 인자는 콜백함수이며 콜백함수에 들어오는 인자는 배열의 원소, 인덱스, (배열 전체) 입니다.
     // map 메소드는 원래 배열과 같은길이의 배열을 리턴하며 각 원소는 콜백함수의 리턴값이 됩니다.
     return data.map((question, index) => {
@@ -99,8 +101,8 @@ const MainContainer = ({ history }) => {
           index={index}
           title={question.title}
           userId={question.userId}
-          answer_1={question.answers[0]}
-          answer_2={question.answers[1]}
+          answer_1={question.Answers[0]}
+          answer_2={question.Answers[1]}
           question={question}
           deleteQuestion={deleteQuestion}
           currentUser={loginState.status.currentUser}
