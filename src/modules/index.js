@@ -5,6 +5,7 @@ import storage from "redux-persist/lib/storage"; // 새로고침을 하면 store
 import signup from "./signup";
 import loginLogout from "./loginLogout";
 import getQuestionsList from "./getQuestionsList";
+import handleUserInfo from "./handleUserInfo";
 
 const persistConfig = {
   key: "root",
@@ -18,6 +19,7 @@ const reducers = combineReducers({
   signup,
   loginLogout,
   getQuestionsList,
+  handleUserInfo,
 });
 
 export default persistReducer(persistConfig, reducers);
