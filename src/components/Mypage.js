@@ -20,10 +20,11 @@ function Mypage(props) {
     currentNickname = props.nickname;
   }
 
-  if (props.currentUser === null) {
-    alert("로그인이 되어있지 않습니다.");
-    history.push("/login");
-  }
+  // 이 부분이 있으니까 alert 순서가 좀 이상해짐
+  // if (props.currentUser === null) {
+  //   alert("로그인이 되어있지 않습니다.");
+  //   history.push("/login");
+  // }
 
   function handleChange(e) {
     let targetName = e.target.name;

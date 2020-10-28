@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import {
   SignupContainer,
   LoginContainer,
   HeaderContainer,
-  MainContainer,
+  QuestionContainer,
   MypageContainer,
   NewQuestionContainer,
 } from "./containers";
@@ -16,8 +16,7 @@ import {
 import "./App.css";
 
 function App() {
-
-  const { isLoggedIn } = useSelector(state => state.loginLogout.status);
+  const { isLoggedIn } = useSelector((state) => state.loginLogout.status);
   console.log(isLoggedIn);
 
   return (
@@ -31,19 +30,19 @@ function App() {
               <Route path="/login" component={LoginContainer} />
               <Route path="/signup" component={SignupContainer} />
               <Route path="/newQuestion" component={NewQuestionContainer} />
-              <Route exact path="/" component={MainContainer} />
+              <Route exact path="/" component={QuestionContainer} />
             </div>
           </Switch>
           <div>
-            {
-              isLoggedIn ?  
+            {isLoggedIn ? (
               <Link to="/newQuestion">
                 <Button variant="primary" className="floatingButton">
                   <span className="buttonInside">+</span>
                 </Button>
-              </Link> :
+              </Link>
+            ) : (
               <div></div>
-            }
+            )}
           </div>
         </Router>
       </div>
