@@ -52,7 +52,11 @@ const QuestionContainer = ({ history }) => {
     return axios
       .get(
         "http://localhost:5000/questions",
-        {},
+        {
+          params:{
+            userId: currentUser
+          }
+        },
         {
           withCredentials: true,
         }
