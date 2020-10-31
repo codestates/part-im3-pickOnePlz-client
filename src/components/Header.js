@@ -1,52 +1,29 @@
 import React from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 
-function Header(props) {
+function Header({ handleLogout }) {
   // let isLogin = false; 로그인 여부 확인 (아직 못받아왔음)
 
-  const history = useHistory();
-
-  const postLogoutReq = () => {
-    props.handleLogout();
-  };
-
-  const redirectToMypage = () => {
-    history.push("/mypage");
-  };
-
   const loginSignupView = (
-    <div className="Header">
-      <Link to="/login" className="login">
-        로그인
-      </Link>
-      <span className="slash">/</span>
-      <Link to="/signup" className="signup">
-        회원가입
-      </Link>
-    </div>
+    <>
+      <Nav>
+        <Nav.Link href="/login">로그인</Nav.Link>
+        {/* <Nav.Link href="/signup">회원가입</Nav.Link> */}
+      </Nav>
+    </>
   );
 
   const logoutMypageView = (
-    <div className="Header">
-      <button
-        // type="submit" : 이렇게 주면, 버튼을 눌렀을 때 전송 기능이 실행되고 페이지가 새로고침된다 : https://dololak.tistory.com/763
-        type="button" // 그래서 이렇게 줘야 한다.
-        className="logout"
-        onClick={postLogoutReq}
-      >
-        로그아웃
-      </button>
-      <button
-        // type="submit" : 이렇게 주면, 버튼을 눌렀을 때 전송 기능이 실행되고 페이지가 새로고침된다 : https://dololak.tistory.com/763
-        type="button" // 그래서 이렇게 줘야 한다.
-        className="logout"
-        onClick={redirectToMypage}
-      >
-        My Page
-      </button>
-    </div>
+    <>
+      <Nav>
+        <NavDropdown title="내 계정">
+          <NavDropdown.Item href="/mypage">마이 페이지</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item onClick={handleLogout}>로그아웃</NavDropdown.Item>
+        </NavDropdown>
+      </Nav>
+    </>
   );
 
   let currentView;
@@ -58,19 +35,18 @@ function Header(props) {
   }
 
   return (
-    <div>
-      <div className="Header">
-        <a
-          href="#"
-          onClick={() => {
-            history.push("/");
-          }}
-        >
-          하나만 골라줘
-        </a>
+    <Navbar
+      collapseOnSelect
+      expand="sm"
+      bg="dark"
+      variant="dark"
+      className="justify-content-between"
+    >
+      <Container>
+        <Navbar.Brand href="/">하나만 골라죠</Navbar.Brand>
         {currentView}
-      </div>
-    </div>
+      </Container>
+    </Navbar>
   );
 }
 

@@ -1,14 +1,9 @@
 .Header {
-  border: 1px solid black;
-  font-size: 25px;
-  float:  center;
+  border-bottom: 1px solid #ccc;
 }
-.login{
-  font-size: medium;
-}
-.signup{
-  font-size: medium;
-}
-.slash{
-  font-size: medium;
+
+.Header .dropdown-menu {
+  left: unset;
+  right: 0;
+  min-width: 7rem;
 }

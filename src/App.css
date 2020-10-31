@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.Body {
-  border: 1px solid black;
-}
-
 .floatingButton {
   position: fixed;
   bottom: 40px;

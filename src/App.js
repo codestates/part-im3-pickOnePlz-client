@@ -21,9 +21,11 @@ function App() {
 
   return (
     <div className="App">
-      <div className="Body">
-        <Router>
+      <Router>
+        <header>
           <HeaderContainer />
+        </header>
+        <main>
           <Switch>
             <div>
               <Route path="/mypage" component={MypageContainer} />
@@ -44,8 +46,9 @@ function App() {
               <div></div>
             )}
           </div>
-        </Router>
-      </div>
+        </main>
+        <footer>01057435437</footer>
+      </Router>
     </div>
   );
 }
