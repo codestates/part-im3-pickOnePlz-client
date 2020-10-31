@@ -53,9 +53,9 @@ const QuestionContainer = ({ history }) => {
       .get(
         "http://localhost:5000/questions",
         {
-          params:{
-            userId: currentUser
-          }
+          params: {
+            userId: currentUser,
+          },
         },
         {
           withCredentials: true,
@@ -110,9 +110,10 @@ const QuestionContainer = ({ history }) => {
           questionId={question.id}
           index={index}
           title={question.title}
-          userId={question.userId}
-          answer_1={question.Answers[0]}
-          answer_2={question.Answers[1]}
+          userId={question.user.id}
+          nickname={question.user.nickname}
+          answer_1={question.answers[0]}
+          answer_2={question.answers[1]}
           question={question}
           deleteQuestion={deleteQuestion}
           votingQuestion={votingQuestion}

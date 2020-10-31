@@ -76,8 +76,9 @@ const MyPageContainer = () => {
       .then((response) => {
         dispatch(updateUserInfoSuccess());
         console.log("response.data : ", response.data);
-        // alert("사용자 정보가 성공적으로 변경되었습니다.");
+        alert("사용자 정보가 성공적으로 변경되었습니다.");
         history.push("/mypage");
+        getUserInfo(loginState.status.currentUser);
         // 개선점 2 : 리디렉트가 깔끔하지 않고, 정보변경 후에 입력창의 값을 지우고 싶다.
         // alert이 없으면 닉네임은 변경된 값이 곧바로 적용되어 렌더링되지 않고 있음 (변경 자체는 잘 된다.)
       })
