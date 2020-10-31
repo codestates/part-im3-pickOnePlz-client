@@ -1,10 +1,11 @@
-.mypageForm {
-  width: 350px;
+.SignupForm {
+  width: 300px;
   padding-top: 30px;
   border-top: 1px solid #ddd;
   box-sizing: content-box;
 }
 
-.nicknameUpdateButton {
-  margin-bottom: 30px;
+.loginLink {
+  width: 300px;
+  font-size: 14px;
 }

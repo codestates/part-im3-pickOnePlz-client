@@ -5,6 +5,7 @@ import axios from "axios";
 import Signup from "../components/Signup";
 // import history from "../modules/history"; // 안 쓰고 처리하였기에 모듈을 지워 둠
 import { signupStart, signupSuccess, signupFailure } from "../modules/signup";
+import { Container } from "react-bootstrap";
 
 const SignupContainer = ({ history }) => {
   const state = useSelector(
@@ -38,7 +39,11 @@ const SignupContainer = ({ history }) => {
       });
   };
 
-  return <Signup handleRegister={handleRegister} />;
+  return (
+    <Container>
+      <Signup handleRegister={handleRegister} />
+    </Container>
+  );
 };
 
 export default SignupContainer;
