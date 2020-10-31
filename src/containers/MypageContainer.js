@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Container } from "react-bootstrap";
@@ -13,6 +13,7 @@ import {
 
 import axios from "axios";
 
+import { Modal, Button } from "react-bootstrap";
 import Mypage from "../components/Mypage";
 
 const MyPageContainer = () => {
@@ -29,6 +30,11 @@ const MyPageContainer = () => {
       state.loginLogout, // reducer 함수를 넣어줘야 하는 듯
     []
   );
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const history = useHistory();
 
@@ -76,8 +82,9 @@ const MyPageContainer = () => {
       )
       .then((response) => {
         dispatch(updateUserInfoSuccess());
-        console.log("response.data : ", response.data);
-        alert("사용자 정보가 성공적으로 변경되었습니다.");
+        // alert("사용자 정보가 성공적으로 변경되었습니다.");
+        // 여기다 모달
+        handleShow();
         history.push("/mypage");
         getUserInfo(loginState.status.currentUser);
         // 개선점 2 : 리디렉트가 깔끔하지 않고, 정보변경 후에 입력창의 값을 지우고 싶다.
@@ -104,6 +111,18 @@ const MyPageContainer = () => {
           nickname={userInfo.nickname}
           updateUserInfo={updateUserInfo}
         />
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>회원정보 수정</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>회원정보 수정에 성공하셨습니다!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              확인
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </main>
   );

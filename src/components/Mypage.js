@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { Form, Button, Row, Col } from "react-bootstrap";
 import "./Mypage.css";
 
 function Mypage(props) {
@@ -28,7 +29,6 @@ function Mypage(props) {
 
   function handleChange(e) {
     let targetName = e.target.name;
-
     if (targetName === "nickname") {
       setNickname(e.target.value);
     }
@@ -67,8 +67,12 @@ function Mypage(props) {
         );
       } else {
         if (nickname.length > 0) {
+          document.querySelector(".nickname").value = "";
           props.updateUserInfo(props.currentUser, nickname, null, null);
         } else {
+          document.querySelector(".oldPassword").value = "";
+          document.querySelector(".newPassword").value = "";
+          document.querySelector(".newPasswordConfirm").value = "";
           props.updateUserInfo(
             props.currentUser,
             null,
@@ -80,53 +84,85 @@ function Mypage(props) {
     }
   }
 
+  // useEffect(() => {
+  //   document.querySelector(".nickname").value = "";
+  // }, []);
+
   return (
-    <>
-      <fieldset>
-        <form className="form">
-          <div>현재 닉네임 : {currentNickname}</div>
-          <div className="input">
-            <span>
-              <input
-                name="nickname"
-                placeholder="닉네임"
-                onChange={handleChange}
-              />
-            </span>
-            <button type="button" onClick={updateUserInfoReq}>
-              저장
-            </button>
-          </div>
-          <div>비밀번호 수정하기</div>
-          <div className="input">
-            <span>
-              <input
-                name="oldPassword"
-                placeholder="기존 비밀번호"
-                onChange={handleChange}
-              />
-            </span>
-            <button type="button" onClick={updateUserInfoReq}>
-              저장
-            </button>
-          </div>
-          <div>
-            <input
+    <div className="py-5">
+      <h4 className="mb-5">마이페이지 </h4>
+      <Form className="mypageForm m-auto">
+        <Form.Group as={Row} controlId="formBasicEmail">
+          <Form.Label column sm={5} className="text-left">
+            닉네임
+          </Form.Label>
+          <Col sm={7} className="pl-0">
+            <Form.Control
+              className="nickname"
+              type="text"
+              name="nickname"
+              onChange={handleChange}
+              placeholder={`현재 닉네임 : ${currentNickname}`}
+            />
+          </Col>
+        </Form.Group>
+        <Button
+          className="w-100 mb-4"
+          variant="secondary"
+          type="button"
+          onClick={updateUserInfoReq}
+        >
+          닉네임 수정하기
+        </Button>
+        <Form.Group as={Row} controlId="formBasicPassword">
+          <Form.Label column sm={5} className="text-left">
+            기존 비밀번호
+          </Form.Label>
+          <Col sm={7} className="pl-0">
+            <Form.Control
+              className="oldPassword"
+              type="password"
+              name="oldPassword"
+              onChange={handleChange}
+            />
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} controlId="formBasicPassword">
+          <Form.Label column sm={5} className="text-left">
+            새 비밀번호
+          </Form.Label>
+          <Col sm={7} className="pl-0">
+            <Form.Control
+              className="newPassword"
+              type="password"
               name="newPassword"
-              placeholder="새 비밀번호"
               onChange={handleChange}
             />
-          </div>
-          <div>
-            <input
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} controlId="formBasicPassword">
+          <Form.Label column sm={5} className="text-left">
+            새 비밀번호 확인
+          </Form.Label>
+          <Col sm={7} className="pl-0">
+            <Form.Control
+              className="newPasswordConfirm"
+              type="password"
               name="newPasswordConfirm"
-              placeholder="새 비밀번호 확인"
               onChange={handleChange}
             />
-          </div>
-        </form>
-      </fieldset>
-    </>
+          </Col>
+        </Form.Group>
+        <Button
+          className="w-100"
+          variant="secondary"
+          type="button"
+          onClick={updateUserInfoReq}
+        >
+          비밀번호 수정하기
+        </Button>
+      </Form>
+    </div>
   );
 }
 export default Mypage;
