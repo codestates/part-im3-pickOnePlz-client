@@ -79,7 +79,7 @@ export default function Question(props) {
           <div>{props.answer_2.votingCount}</div>
         </div>
       </div>
-      <div className="description__mainPage">description(optional-미구현)</div>
+      {/* <div className="description__mainPage">description(optional-미구현)</div> */}
       {props.currentUser === props.userId ? deleteAndUpdateButton : ""}
     </div>
   );
