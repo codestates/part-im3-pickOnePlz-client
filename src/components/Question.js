@@ -6,7 +6,10 @@ export default function Question(props) {
   const { isLoggedIn } = useSelector(state => state.loginLogout.status);
   
   const isVoteAnswer = ( qwer ) => {
-    return qwer > 0;
+    if(isLoggedIn){
+      return qwer > 0;
+    }
+    return false;;
   }
 
   const answer1 = isVoteAnswer(props.answer_1.Votes.length);
