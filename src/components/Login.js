@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Form, Button, Row, Col } from "react-bootstrap";
+import "./Login.css";
 
-function Login(props) {
+function Login({ handleLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +25,7 @@ function Login(props) {
     if (password === "") {
       alert("비밀번호를 입력하지 않으셨습니다. 비밀번호를 입력해 주세요.");
     } else {
-      props.handleLogin(email, password);
+      handleLogin(email, password);
       // props.handleLogin(email, password).then((result) => {
       //   if (!result) {
       //     setEmail("");
@@ -35,42 +36,44 @@ function Login(props) {
   }
 
   return (
-    <div>
-      <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            name="email"
-            placeholder="Enter email"
-            onChange={handleChange}
-          />
-          <Form.Text className="text-muted">
-            We`ll never share your email with anyone else.
-          </Form.Text>
+    <div className="py-5">
+      <h4 className="mb-5">로그인</h4>
+
+      <Form className="loginForm m-auto">
+        <Form.Group as={Row} controlId="formBasicEmail">
+          <Form.Label column sm={4} className="text-left">
+            이메일
+          </Form.Label>
+          <Col sm={8} className="pl-0">
+            <Form.Control type="email" name="email" onChange={handleChange} />
+          </Col>
         </Form.Group>
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-          />
+        <Form.Group as={Row} controlId="formBasicPassword">
+          <Form.Label column sm={4} className="text-left">
+            비밀번호
+          </Form.Label>
+          <Col sm={8} className="pl-0">
+            <Form.Control
+              type="password"
+              name="password"
+              onChange={handleChange}
+            />
+          </Col>
         </Form.Group>
-        {/* <Form.Group controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group> 체크박스 부분 사용여부 확인*/}
         <Button
-          variant="primary"
+          className="w-100"
+          variant="secondary"
           // type="submit" : 이렇게 주면, 버튼을 눌렀을 때 전송 기능이 실행되고 페이지가 새로고침된다 : https://dololak.tistory.com/763
           type="button" // 그래서 이렇게 줘야 한다.
           onClick={postLoginReq}
         >
-          Submit
+          로그인
         </Button>
       </Form>
-      <Link to="/signup">골라죠 회원이 아니신가요?</Link>
+      <div className="signupLink mx-auto mt-4 text-right">
+        <p className="mb-1">아직 골라죠 멤버가 아니신가요?</p>
+        <Link to="/signup">골라죠 가입하기</Link>
+      </div>
     </div>
   );
 }

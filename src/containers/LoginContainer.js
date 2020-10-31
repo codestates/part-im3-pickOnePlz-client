@@ -3,6 +3,7 @@ import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { instanceOf } from "prop-types";
 import { withCookies, Cookies } from "react-cookie";
+import { Container } from "react-bootstrap";
 
 import axios from "axios";
 
@@ -53,9 +54,9 @@ const LoginContainer = ({ history, cookies }) => {
   };
 
   return (
-    <div>
+    <Container>
       <Login handleLogin={handleLogin} />
-    </div>
+    </Container>
   );
 };
 

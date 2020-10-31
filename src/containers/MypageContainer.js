@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import {
   getUserInfoStart,
   getUserInfoSuccess,
@@ -96,11 +97,15 @@ const MyPageContainer = () => {
   console.log("userInfo : ", userInfo);
 
   return (
-    <Mypage
-      currentUser={loginState.status.currentUser}
-      nickname={userInfo.nickname}
-      updateUserInfo={updateUserInfo}
-    />
+    <main>
+      <Container>
+        <Mypage
+          currentUser={loginState.status.currentUser}
+          nickname={userInfo.nickname}
+          updateUserInfo={updateUserInfo}
+        />
+      </Container>
+    </main>
   );
 };
 
