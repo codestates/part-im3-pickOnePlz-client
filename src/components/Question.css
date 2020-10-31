@@ -1,4 +1,22 @@
-.eachQuestion__mainPage {
+.questionBox {
+  border: 1px solid black;
+  padding: 10px;
+  width: 500px;
+}
+
+.deleteButton {
+  left: unset;
+  right: 0;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.qwer {
+  font-size: 15px;
+}
+
+/* .eachQuestion__mainPage {
   margin-left: 20%;
   margin-right: 20%;
   margin-top: 10px;
@@ -43,4 +61,4 @@
 .deleteButton {
   float: right;
   margin: 5px;
-}
+} */

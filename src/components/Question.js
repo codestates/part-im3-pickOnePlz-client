@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Button, Card, CardDeck, Col, Row } from 'react-bootstrap';
 import "./Question.css";
 
 export default function Question(props) {
@@ -32,26 +33,34 @@ export default function Question(props) {
   };
 
   let deleteAndUpdateButton = (
-    <div className="buttons__mainPage">
-      <input type="button" className="editButton" value="글 수정"></input>
-      <input
-        type="button"
-        className="deleteButton"
-        value="글 삭제"
-        onClick={handleDeleteReq}
-      ></input>
-    </div>
+    <Button
+      className="w-10"
+      variant="secondary"
+      type="button"
+      onClick={handleDeleteReq}
+    >
+    삭제
+    </Button>
   );
 
   let eachQuestion = (
-    <div className="eachQuestion__mainPage">
-      <div className="questionTitle__mainPage">{props.title}</div>
-      <div className="questionNickname__mainPage">{props.nickname}</div>
-      <div className="allAnswers__mainPage">
-        <div className="answer__mainPage" style={answer1 ? isVoted : notVoted}>
-          <div>{props.answer_1.message}</div>
-          {isLoggedIn ? (
-            <button
+    <>
+    <div className="py-5">
+    <h4>{props.title}, 닉네임: {props.nickname}</h4> 
+      <CardDeck className="questionBox m-auto">
+        <div className="answers m-auto">
+        <Row>
+          <Col xs={12} md={6}>
+            <Card className="asdf">
+            {/* <Card.Iarmg variant="top" src="holder.js/100px160" /> */}
+              <Card.Title className="qwer">투표수 : {props.answer_1.votingCount}</Card.Title>
+              <Card.Body>
+              <Card.Text>{props.answer_1.message}</Card.Text>
+              </Card.Body>
+              <Card.Footer>
+              <small className="text-muted">          
+              {isLoggedIn ? (
+              <button
               onClick={() => {
                 props.votingQuestion(props.questionId, props.answer_1.id);
               }}
@@ -60,14 +69,20 @@ export default function Question(props) {
             </button>
           ) : (
             <div></div>
-          )}
-          <div>투표수</div>
-          <div>{props.answer_1.votingCount}</div>
-        </div>
-        <div style={{ display: "inline-block", margin: "5px" }}>vs</div>
-        <div className="answer__mainPage" style={answer2 ? isVoted : notVoted}>
-          <div>{props.answer_2.message}</div>
-          {isLoggedIn ? (
+          )}</small>
+              </Card.Footer>
+            </Card>
+          </Col>
+          <Col xs={12} md={6}>
+            <Card className="asdf">
+            <Card.Title className="qwer">투표수 : {props.answer_2.votingCount}</Card.Title>
+            {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
+            <Card.Body>
+            <Card.Text>{props.answer_2.message}</Card.Text>
+            </Card.Body>
+            <Card.Footer>
+            <small className="text-muted">          
+            {isLoggedIn ? (
             <button
               onClick={() => {
                 props.votingQuestion(props.questionId, props.answer_2.id);
@@ -77,18 +92,17 @@ export default function Question(props) {
             </button>
           ) : (
             <div></div>
-          )}
-          <div>투표수</div>
-          <div>{props.answer_2.votingCount}</div>
-        </div>
+          )}</small>
+            </Card.Footer>
+            </Card>
+        </Col>
+      </Row>
+      <Row className="deleteButton ">{props.currentUser === props.userId ? deleteAndUpdateButton : ""}</Row>
       </div>
-      {/* <div className="description__mainPage">description(optional-미구현)</div> */}
-      {props.currentUser === props.userId ? deleteAndUpdateButton : ""}
+      </CardDeck>
     </div>
+    </>
   );
-
-  // console.log(eachQuestion__mainPage._owner.key); // 나중에, 각 question의 key를 잡기 위해서 써먹어야 할 것 같은데...
-  // 각 answer에도 key 이런걸로 접근할 수 있어야 할 것인데..어떻게 하지?
-
+  
   return <div>{eachQuestion}</div>;
 }
