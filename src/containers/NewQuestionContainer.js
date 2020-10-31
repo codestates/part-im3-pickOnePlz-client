@@ -2,6 +2,7 @@ import React from "react";
 import NewQuestion from "../components/NewQuestion";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 const NewQuestionContainer = () => {
   const history = useHistory();
@@ -17,7 +18,10 @@ const NewQuestionContainer = () => {
     }
   };
 
-  return <NewQuestion onSubmit={onSubmit} />;
+  return (
+    <Container>
+      <NewQuestion onSubmit={onSubmit} />
+    </Container>)
 };
 
 export default NewQuestionContainer;

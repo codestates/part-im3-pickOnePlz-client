@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Button } from "react-bootstrap";
+import { Button, Form, Row, Col, InputGroup, FormControl } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./NewQuestion.css";
 
@@ -31,7 +31,7 @@ function NewQuestion({ onSubmit }) {
     }
     return true;
   };
-
+  
   function handleChange(e) {
     switch (e.target.name) {
       case "title":
@@ -49,77 +49,60 @@ function NewQuestion({ onSubmit }) {
   }
 
   return (
-    <div>
-      <div className="questionTitle">
-        어떤 것이 고민이신가요?
-        <div>
-          <input
-            type="text"
-            size="40"
-            name="title"
-            maxLength="30"
-            placeholder="제목을 입력하세요!"
-            onChange={handleChange}
-          ></input>
-        </div>
-      </div>
-      <div className="allAnswers">
-        <div className="answer">
-          이거랑....
-          <div>
-            <textarea
-              className="textareaBox"
-              required
-              rows="5"
-              wrap="hard"
-              name="firstAnswer"
-              onChange={handleChange}
-              style={{ resize: "none" }}
-              placeholder="첫번째 선택지를 입력하세요."
-            ></textarea>
-          </div>
-        </div>
-
-        <div className="answer">
-          이거중에....
-          <div>
-            <textarea
-              className="textareaBox"
-              required
-              rows="5"
-              maxlength="200"
-              name="secondAnswer"
-              onChange={handleChange}
-              style={{ resize: "none" }}
-              placeholder="두번째 선택지를 입력하세요."
-            ></textarea>
-          </div>
-        </div>
-      </div>
-      {/* <div>
-        <textarea
-          className="description"
-          cols="45"
-          rows="5"
-          maxlength="1000"
-          style={{ resize: "none" }}
-          placeholder="상황 설명을 입력하세요(필수가 아닙니다)."
-        ></textarea>
-      </div> */}
-      <div>
-        <Button
-          className="inputButton"
-          variant="primary"
-          onClick={() => {
-            if (inputValidation()) {
-              onSubmit(postData);
-            }
-          }}
-        >
-          골라주세요!!!
-        </Button>
-      </div>
+    <>
+    <div className="py-5">
+    <h4 className="mb-5">글 작 성</h4>
+    <Form className="newQuestionForm m-auto">
+      <Form.Group as={Row} controlId="formBasicEmail">
+        <Form.Label column sm={2} className="text-left">
+          제목
+        </Form.Label>
+        <Col sm={10} className="pl-0">
+          <Form.Control type="text" name="title" onChange={handleChange} />
+        </Col>
+      </Form.Group>
+      <Row>
+        <Col>
+          <Form.Group as={Row} controlId="formBasicEmail">
+            <Form.Label column sm={4} className="text-left">
+              선택1
+          </Form.Label>
+          <InputGroup>
+            <InputGroup.Prepend>
+                </InputGroup.Prepend>
+              <FormControl as="textarea" name="firstAnswer" aria-label="With textarea" className="inputbox" rows="5" onChange={handleChange}/>
+            </InputGroup>
+          </Form.Group>
+        </Col>
+        <Col>
+          <Form.Group as={Row} controlId="formBasicEmail">
+            <Form.Label column sm={4} className="text-left">
+            선택2
+            </Form.Label>
+            <InputGroup>
+            <InputGroup.Prepend>
+                </InputGroup.Prepend>
+              <FormControl as="textarea" name="secondAnswer" aria-label="With textarea" className="inputbox" rows="5" onChange={handleChange}/>
+            </InputGroup>
+          </Form.Group>
+        </Col>
+      </Row>
+      
+      <Button
+        className="w-100"
+        variant="secondary"
+        type="button"
+        onClick={() => {
+          if (inputValidation()) {
+            onSubmit(postData);
+          }
+        }}
+      >
+        작성
+      </Button>
+    </Form>
     </div>
+    </>
   );
 }
 

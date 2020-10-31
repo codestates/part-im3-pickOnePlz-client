@@ -1,24 +1,16 @@
-.questionTitle {
-  margin: 10px;
+.newQuestionForm {
+  width: 500px;
+  padding-top: 30px;
+  border-top: 1px solid #ddd;
+  box-sizing: content-box;
 }
 
-.allAnswers {
-  text-align: center;
-  margin: 0 auto;
-  margin: 10px;
-  height: 70%;
+.newQuestionLink {
+  width: 300px;
+  font-size: 14px;
 }
 
-.answer {
-  display: inline-block;
-  margin: 10px;
-}
-
-.textareaBox {
-  width: 100%;
-  height: 200%;
-}
-
-.inputButton {
-  margin: 10px;
+.inputbox {
+  resize: none;
+  margin: 15px;
 }
