@@ -1,7 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from 'react-redux';
 import "./Question.css";
 
 export default function Question(props) {
+  const { isLoggedIn } = useSelector(state => state.loginLogout.status);
+  
+  const isVoteAnswer = ( qwer ) => {
+    return qwer > 0;
+  }
+
+  const answer1 = isVoteAnswer(props.answer_1.Votes.length);
+  const answer2 = isVoteAnswer(props.answer_2.Votes.length);
+
+  const isVoted = {
+    background : 'orange'
+  }
+  const notVoted = {
+    background : 'white'
+  }
+
   // Main 이거 이름 별로인 듯. => Question 으로 수정함
   const handleDeleteReq = () => {
     if (props.currentUser === null) {
@@ -27,28 +44,34 @@ export default function Question(props) {
     <div className="eachQuestion__mainPage">
       <div className="questionTitle__mainPage">{props.title}</div>
       <div className="allAnswers__mainPage">
-        <div className="answer__mainPage">
+        <div className="answer__mainPage" style={answer1 ? isVoted : notVoted }>
           <div>{props.answer_1.message}</div>
-          <button
+          {
+            isLoggedIn ?           
+            <button
             onClick={() => {
               props.votingQuestion(props.questionId, props.answer_1.id);
-            }}
-          >
+            }}>
             투표
-          </button>
+            </button> :
+            <div></div>
+          }
           <div>투표수</div>
           <div>{props.answer_1.votingCount}</div>
         </div>
         <div style={{ display: "inline-block", margin: "5px" }}>vs</div>
-        <div className="answer__mainPage">
+        <div className="answer__mainPage" style={answer2 ? isVoted : notVoted }>
           <div>{props.answer_2.message}</div>
-          <button
+          {
+            isLoggedIn ?           
+            <button
             onClick={() => {
               props.votingQuestion(props.questionId, props.answer_2.id);
-            }}
-          >
+            }}>
             투표
-          </button>
+            </button> :
+            <div></div>
+          }
           <div>투표수</div>
           <div>{props.answer_2.votingCount}</div>
         </div>
