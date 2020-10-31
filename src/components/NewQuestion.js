@@ -1,35 +1,36 @@
 import React, { useState } from "react";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./NewQuestion.css";
 
 function NewQuestion({ onSubmit }) {
+  const { currentUser } = useSelector((state) => state.loginLogout.status);
 
-  const { currentUser } = useSelector(state => state.loginLogout.status)
-
-  const [title, setTitle] = useState('');
-  const [firstAnswer, setFirstAnswer] = useState('');
-  const [secondAnswer, setSecondAnswer] = useState('');
+  const [title, setTitle] = useState("");
+  const [firstAnswer, setFirstAnswer] = useState("");
+  const [secondAnswer, setSecondAnswer] = useState("");
 
   const postData = {
     title: title,
-    answers: [{
-      message: firstAnswer
-    },
-    {
-      message: secondAnswer
-    }],
-    userId: currentUser
-  }
+    answers: [
+      {
+        message: firstAnswer,
+      },
+      {
+        message: secondAnswer,
+      },
+    ],
+    userId: currentUser,
+  };
 
   const inputValidation = () => {
-    if(title===''||firstAnswer===''||secondAnswer===''){
+    if (title === "" || firstAnswer === "" || secondAnswer === "") {
       alert("정보를 입력하세요");
       return false;
     }
     return true;
-  }
+  };
 
   function handleChange(e) {
     switch (e.target.name) {
@@ -55,7 +56,7 @@ function NewQuestion({ onSubmit }) {
           <input
             type="text"
             size="40"
-            name='title'
+            name="title"
             maxLength="30"
             placeholder="제목을 입력하세요!"
             onChange={handleChange}
@@ -71,7 +72,7 @@ function NewQuestion({ onSubmit }) {
               required
               rows="5"
               wrap="hard"
-              name='firstAnswer'
+              name="firstAnswer"
               onChange={handleChange}
               style={{ resize: "none" }}
               placeholder="첫번째 선택지를 입력하세요."
@@ -87,7 +88,7 @@ function NewQuestion({ onSubmit }) {
               required
               rows="5"
               maxlength="200"
-              name='secondAnswer'
+              name="secondAnswer"
               onChange={handleChange}
               style={{ resize: "none" }}
               placeholder="두번째 선택지를 입력하세요."
@@ -106,13 +107,17 @@ function NewQuestion({ onSubmit }) {
         ></textarea>
       </div> */}
       <div>
-          <Button className="inputButton" variant="primary" onClick={()=>{
-            if(inputValidation()){
+        <Button
+          className="inputButton"
+          variant="primary"
+          onClick={() => {
+            if (inputValidation()) {
               onSubmit(postData);
             }
-          }}>
-            골라주세요!!!
-          </Button>
+          }}
+        >
+          골라주세요!!!
+        </Button>
       </div>
     </div>
   );
