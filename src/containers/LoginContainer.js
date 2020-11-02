@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { instanceOf } from "prop-types";
 import { withCookies, Cookies } from "react-cookie";
 import { Container } from "react-bootstrap";
+import REACT_APP_URL from "../config";
 
 import axios from "axios";
 
@@ -25,7 +26,7 @@ const LoginContainer = ({ history, cookies }) => {
 
     return axios
       .post(
-        "http://localhost:5000/users/login",
+        `${REACT_APP_URL}/users/login`,
         { email, password },
         { withCredentials: true }
       )

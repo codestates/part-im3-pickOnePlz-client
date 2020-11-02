@@ -10,6 +10,7 @@ import {
   updateUserInfoSuccess,
   updateUserInfoFailure,
 } from "../modules/handleUserInfo";
+import REACT_APP_URL from "../config";
 
 import axios from "axios";
 
@@ -45,7 +46,7 @@ const MyPageContainer = () => {
 
     return axios
       .get(
-        `http://localhost:5000/users/${currentUserId}`,
+        `${REACT_APP_URL}/users/${currentUserId}`,
         {},
         {
           withCredentials: true,
@@ -69,7 +70,7 @@ const MyPageContainer = () => {
 
     return axios
       .put(
-        `http://localhost:5000/users/${currentUser}`,
+        `${REACT_APP_URL}/users/${currentUser}`,
         {
           id: currentUser,
           nickname: nickname,

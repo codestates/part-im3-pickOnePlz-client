@@ -3,10 +3,11 @@ import NewQuestion from "../components/NewQuestion";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { Container } from "react-bootstrap";
+import REACT_APP_URL from "../config";
 
 const NewQuestionContainer = () => {
   const history = useHistory();
-  const url = "http://localhost:5000/questions";
+  const url = `${REACT_APP_URL}/questions`;
 
   const onSubmit = async (data) => {
     const response = await axios.post(url, data, { withCredentials: true });
@@ -21,7 +22,8 @@ const NewQuestionContainer = () => {
   return (
     <Container>
       <NewQuestion onSubmit={onSubmit} />
-    </Container>)
+    </Container>
+  );
 };
 
 export default NewQuestionContainer;
