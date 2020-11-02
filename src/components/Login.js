@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "./Login.css";
 
-function Login({ handleLogin }) {
+const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,7 +21,7 @@ function Login({ handleLogin }) {
   }
 
   // 아직 덜 됨
-  function postLoginReq() {
+  const postLoginReq = () => {
     if (password === "") {
       alert("비밀번호를 입력하지 않으셨습니다. 비밀번호를 입력해 주세요.");
     } else {

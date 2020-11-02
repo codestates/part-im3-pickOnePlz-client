@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 
-function Header({ handleLogout }) {
+const Header = ({ handleLogout }) => {
   // let isLogin = false; 로그인 여부 확인 (아직 못받아왔음)
 
   const loginSignupView = (

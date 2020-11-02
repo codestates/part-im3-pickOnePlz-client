@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Button, Card, CardDeck, Col, Row } from 'react-bootstrap';
 import "./Question.css";
 
-export default function Question(props) {
+const Question = (props) => {
   const { isLoggedIn } = useSelector((state) => state.loginLogout.status);
 
   const isVoteAnswer = (qwer) => {
@@ -106,3 +106,5 @@ export default function Question(props) {
   
   return <div>{eachQuestion}</div>;
 }
+
+export default Question;

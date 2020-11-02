@@ -4,7 +4,7 @@ import { Button, Form, Row, Col, InputGroup, FormControl } from "react-bootstrap
 import { Link } from "react-router-dom";
 import "./NewQuestion.css";
 
-function NewQuestion({ onSubmit }) {
+const NewQuestion = ({ onSubmit }) => {
   const { currentUser } = useSelector((state) => state.loginLogout.status);
 
   const [title, setTitle] = useState("");
@@ -32,7 +32,7 @@ function NewQuestion({ onSubmit }) {
     return true;
   };
   
-  function handleChange(e) {
+  const handleChange = (e) => {
     switch (e.target.name) {
       case "title":
         setTitle(e.target.value);
