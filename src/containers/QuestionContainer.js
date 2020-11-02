@@ -37,11 +37,13 @@ const QuestionContainer = ({ history }) => {
     };
     const response = await axios.post("http://localhost:5000/votes", setData, {
       withCredentials: true,
-    });
-    if (response.status === 201) {
-      alert(response.data);
-      getAllQuestions();
-    }
+    }).then(({data})=>{
+      alert(data);
+    })
+    .catch((error)=>{
+      alert(error.response.data);
+    })
+  
   };
 
   const dispatch = useDispatch();

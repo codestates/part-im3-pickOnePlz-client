@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "./Signup.css";
 
-export default function Signup(props) {
+const Signup = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     let targetName = e.target.name;
 
     if (targetName === "email") {
@@ -23,7 +23,7 @@ export default function Signup(props) {
     }
   }
 
-  function postSignupReq() {
+  const postSignupReq = () => {
     if (password === "") {
       alert("비밀번호를 입력하지 않으셨습니다. 비밀번호를 입력해 주세요.");
     } else if (password !== passwordConfirm) {
@@ -107,3 +107,5 @@ Signup.defaultProps = {
     console.error("register function is not defined");
   },
 };
+
+export default Signup;

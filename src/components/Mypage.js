@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "./Mypage.css";
 
-function Mypage(props) {
+const Mypage = (props) => {
   const [nickname, setNickname] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -27,7 +27,7 @@ function Mypage(props) {
   //   history.push("/login");
   // }
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     let targetName = e.target.name;
     if (targetName === "nickname") {
       setNickname(e.target.value);
@@ -45,7 +45,7 @@ function Mypage(props) {
 
   // 개선점 3 : 비밀번호 수정과 닉네임 수정이 각각 다른 버튼으로 존재함
   // 이러다보니 분기 처리가 필요하게 되고, 사용자는 전체 값을 한번에 바꾸고 싶을 수도 있는데 이에 대응하지 못함
-  function updateUserInfoReq() {
+  const updateUserInfoReq = () => {
     if (
       nickname === "" &&
       oldPassword === "" &&
@@ -83,10 +83,6 @@ function Mypage(props) {
       }
     }
   }
-
-  // useEffect(() => {
-  //   document.querySelector(".nickname").value = "";
-  // }, []);
 
   return (
     <div className="py-5">
