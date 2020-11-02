@@ -1,7 +1,7 @@
 let REACT_APP_URL;
 
 if (process.env.NODE_ENV === "production") {
-  REACT_APP_URL = "ec2-3-132-118-81.us-east-2.compute.amazonaws.com";
+  REACT_APP_URL = "http://ec2-3-132-118-81.us-east-2.compute.amazonaws.com:5000";
 } else if (
   process.env.NODE_ENV === "development" ||
   process.env.NODE_ENV === "test"
