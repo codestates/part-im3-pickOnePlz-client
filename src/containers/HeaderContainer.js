@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import REACT_APP_URL from "../config";
 
 import axios from "axios";
 
@@ -21,7 +22,7 @@ const HeaderContainer = () => {
 
   const handleLogout = () => {
     return axios
-      .post("http://localhost:5000/users/logout", {}, { withCredentials: true })
+      .post(`${REACT_APP_URL}/users/logout`, {}, { withCredentials: true })
       .then(() => {
         dispatch(logout());
         alert("성공적으로 로그아웃 되었습니다.");

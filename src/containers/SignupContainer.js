@@ -6,6 +6,7 @@ import Signup from "../components/Signup";
 // import history from "../modules/history"; // 안 쓰고 처리하였기에 모듈을 지워 둠
 import { signupStart, signupSuccess, signupFailure } from "../modules/signup";
 import { Container } from "react-bootstrap";
+import REACT_APP_URL from "../config";
 
 const SignupContainer = ({ history }) => {
   const state = useSelector(
@@ -23,7 +24,7 @@ const SignupContainer = ({ history }) => {
     dispatch(signupStart());
     return axios
       .post(
-        "http://localhost:5000/users/signup",
+        `${REACT_APP_URL}/users/signup`,
         { email, password },
         { withCredentials: true }
       )

@@ -8,6 +8,7 @@ import {
   questionRemoveSuccess,
   questionRemoveFailure,
 } from "../modules/getQuestionsList";
+import REACT_APP_URL from "../config";
 
 import axios from "axios";
 
@@ -35,15 +36,17 @@ const QuestionContainer = ({ history }) => {
       questionId: _questionId,
       answerId: _answerId,
     };
-    const response = await axios.post("http://localhost:5000/votes", setData, {
-      withCredentials: true,
-    }).then(({data})=>{
-      alert(data);
-    })
-    .catch((error)=>{
-      alert(error.response.data);
-    })
-  
+    const response = await axios
+      .post(`${REACT_APP_URL}/votes`, setData, {
+        withCredentials: true,
+      })
+      .then(({ data }) => {
+        getAllQuestions();
+        // alert(data);
+      })
+      .catch((error) => {
+        alert(error.response.data);
+      });
   };
 
   const dispatch = useDispatch();
@@ -53,7 +56,7 @@ const QuestionContainer = ({ history }) => {
 
     return axios
       .get(
-        "http://localhost:5000/questions",
+        `${REACT_APP_URL}/questions`,
         {
           params: {
             userId: currentUser,
@@ -80,7 +83,7 @@ const QuestionContainer = ({ history }) => {
 
     return axios
       .delete(
-        `http://localhost:5000/questions/${questionId}`,
+        `${REACT_APP_URL}/questions/${questionId}`,
         {},
         {
           withCredentials: true,
