@@ -45,7 +45,6 @@ const LoginContainer = ({ history, cookies }) => {
         // // * btoa 는 base64 로 인코드 하는 메소드입니다. 이에 대해 익숙치 않으신 분들은 아래의 링크를 참조해 주세요.
         // // * base64 인코드, 디코드 메소드 - btoa(), atob() : https://pro-self-studier.tistory.com/106?category=659555
         // document.cookie = "key=" + btoa(JSON.stringify(loginData));
-        alert("로그인에 성공하셨습니다!");
         history.push("/");
       })
       .catch((error) => {
