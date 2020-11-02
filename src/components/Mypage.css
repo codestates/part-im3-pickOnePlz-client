@@ -1,0 +1,10 @@
+.mypageForm {
+  width: 350px;
+  padding-top: 30px;
+  border-top: 1px solid #ddd;
+  box-sizing: content-box;
+}
+
+.nicknameUpdateButton {
+  margin-bottom: 30px;
+}

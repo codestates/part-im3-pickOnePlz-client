@@ -1,0 +1,9 @@
+.Header {
+  border-bottom: 1px solid #ccc;
+}
+
+.Header .dropdown-menu {
+  left: unset;
+  right: 0;
+  min-width: 7rem;
+}

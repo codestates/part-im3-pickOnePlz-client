@@ -1,0 +1,64 @@
+.questionBox {
+  border: 1px solid black;
+  padding: 10px;
+  width: 500px;
+}
+
+.deleteButton {
+  left: unset;
+  right: 0;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.qwer {
+  font-size: 15px;
+}
+
+/* .eachQuestion__mainPage {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid red;
+}
+
+.questionTitle__mainPage {
+  border: 1px solid blue;
+  margin: 5px;
+}
+
+.allAnswers__mainPage {
+  border: 1px solid blue;
+  margin: 5px;
+}
+
+.answer__mainPage {
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid red;
+  width: 40%;
+  height: 100px;
+}
+
+.description__mainPage {
+  border: 1px solid blue;
+  margin: 5px;
+}
+
+.buttons__mainPage {
+  display: inline-block;
+  border: 1px solid blue;
+  margin-left: 40%;
+}
+
+.editButton {
+  float: right;
+  margin: 5px;
+}
+
+.deleteButton {
+  float: right;
+  margin: 5px;
+} */

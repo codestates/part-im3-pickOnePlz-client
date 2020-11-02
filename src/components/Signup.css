@@ -1,0 +1,11 @@
+.SignupForm {
+  width: 300px;
+  padding-top: 30px;
+  border-top: 1px solid #ddd;
+  box-sizing: content-box;
+}
+
+.loginLink {
+  width: 300px;
+  font-size: 14px;
+}
