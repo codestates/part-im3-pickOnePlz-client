@@ -73,7 +73,7 @@ const Question = ({
             <Card
               className="answer"
               onClick={() => {
-                if (!isCurrentUser) {
+                if (currentUser === null) {
                   alert("로그인 후 투표해 주세요!");
                   history.push("/login");
                 } else {
@@ -105,7 +105,7 @@ const Question = ({
             <Card
               className="answer"
               onClick={() => {
-                if (!isCurrentUser) {
+                if (currentUser === null) {
                   alert("로그인 후 투표해 주세요!");
                   history.push("/login");
                 } else {

@@ -19,6 +19,10 @@ const LoginContainer = ({ history, cookies }) => {
     []
   );
 
+  if (state.status.currentUser) {
+    history.push("/");
+  }
+
   const dispatch = useDispatch();
 
   const handleLogin = (email, password) => {
@@ -34,7 +38,7 @@ const LoginContainer = ({ history, cookies }) => {
         let loggedInUser = Number(cookies.get("session_id"));
 
         // const { token, id } = response.data;
-        
+
         // axios.defaults.headers.common['Authorization'] = `${token}`;
 
         // dispatch(loginSuccess(id));
