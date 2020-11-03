@@ -1,110 +1,131 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { useSelector } from "react-redux";
-import { Button, Card, CardDeck, Col, Row } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import { Button, Card, Row, Col } from "react-bootstrap";
 import "./Question.css";
 
-const Question = (props) => {
+const Question = ({
+  answer_1,
+  answer_2,
+  currentUser,
+  deleteQuestion,
+  index,
+  nickname,
+  question,
+  questionId,
+  title,
+  userId,
+  votingQuestion,
+}) => {
   const { isLoggedIn } = useSelector((state) => state.loginLogout.status);
 
-  const isVoteAnswer = (qwer) => {
-    if (isLoggedIn) {
-      return qwer > 0;
-    }
-    return false;
-  };
+  const isCurrentUser = currentUser === userId;
 
-  const answer1 = isVoteAnswer(props.answer_1.votes.length);
-  const answer2 = isVoteAnswer(props.answer_2.votes.length);
-
-  const isVoted = {
-    background: "orange",
-  };
-  const notVoted = {
-    background: "white",
-  };
+  const isVotedAnswer = (answer) => answer.votes.length > 0;
 
   // Main 이거 이름 별로인 듯. => Question 으로 수정함
   const handleDeleteReq = () => {
-    if (props.currentUser === null) {
+    if (currentUser === null) {
       console.log("로그인이 되어있지 않습니다.");
       return;
     }
-    props.deleteQuestion(props.questionId, props.index);
+    deleteQuestion(questionId, index);
   };
 
+  const colors = [
+    "#ff4b5c",
+    "#0e918c",
+    "#fa7f72",
+    "#d7385e",
+    "#1f3c88",
+    "#625261",
+  ];
+  let random_color_1 = colors[Math.floor(Math.random() * colors.length)];
+  let random_color_2 = colors[Math.floor(Math.random() * colors.length)];
+
+  // 이건 컴포넌트로 빼주세요.
   let deleteAndUpdateButton = (
     <Button
-      className="w-10"
-      variant="secondary"
+      className="w-100"
+      variant="outline-danger"
       type="button"
       onClick={handleDeleteReq}
     >
-    삭제
+      삭제하기
     </Button>
   );
 
-  let eachQuestion = (
-    <>
-    <div className="py-5">
-    <h4>{props.title}, 닉네임: {props.nickname}</h4> 
-      <CardDeck className="questionBox m-auto">
-        <div className="answers m-auto">
+  return (
+    <Card className="question mx-auto my-4">
+      <Card.Header>{nickname} 씨</Card.Header>
+      <Card.Title className="mt-4">{title}</Card.Title>
+      <Card.Body>
         <Row>
-          <Col xs={12} md={6}>
-            <Card className="asdf">
-            {/* <Card.Iarmg variant="top" src="holder.js/100px160" /> */}
-              <Card.Title className="qwer">투표수 : {props.answer_1.votingCount}</Card.Title>
-              <Card.Body>
-              <Card.Text>{props.answer_1.message}</Card.Text>
-              </Card.Body>
-              <Card.Footer>
-              <small className="text-muted">          
-              {isLoggedIn ? (
-              <button
+          <Col>
+            <Card
+              className="answer"
               onClick={() => {
-                props.votingQuestion(props.questionId, props.answer_1.id);
+                votingQuestion(questionId, answer_1.id);
               }}
             >
-              투표
-            </button>
-          ) : (
-            <div></div>
-          )}</small>
-              </Card.Footer>
+              <Card.Body
+                style={{
+                  background: random_color_1,
+                  borderBottomLeftRadius: isCurrentUser && 0,
+                  borderBottomRightRadius: isCurrentUser && 0,
+                }}
+              >
+                <Card.Text>
+                  {isLoggedIn && isVotedAnswer(answer_1) && "✓"}{" "}
+                  {answer_1.message}
+                </Card.Text>
+              </Card.Body>
+              {isCurrentUser && (
+                <Card.Footer>
+                  <div>골라준 사람</div>
+                  {answer_1.votingCount}
+                </Card.Footer>
+              )}
             </Card>
           </Col>
-          <Col xs={12} md={6}>
-            <Card className="asdf">
-            <Card.Title className="qwer">투표수 : {props.answer_2.votingCount}</Card.Title>
-            {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
-            <Card.Body>
-            <Card.Text>{props.answer_2.message}</Card.Text>
-            </Card.Body>
-            <Card.Footer>
-            <small className="text-muted">          
-            {isLoggedIn ? (
-            <button
+          <Col>
+            <Card
+              className="answer"
               onClick={() => {
-                props.votingQuestion(props.questionId, props.answer_2.id);
+                votingQuestion(questionId, answer_2.id);
               }}
             >
-              투표
-            </button>
-          ) : (
-            <div></div>
-          )}</small>
-            </Card.Footer>
+              <Card.Body
+                style={{
+                  background: random_color_2,
+                  borderBottomLeftRadius: isCurrentUser && 0,
+                  borderBottomRightRadius: isCurrentUser && 0,
+                }}
+              >
+                <Card.Text>
+                  {isLoggedIn && isVotedAnswer(answer_2) && "✓"}{" "}
+                  {answer_2.message}
+                </Card.Text>
+              </Card.Body>
+              {isCurrentUser && (
+                <Card.Footer>
+                  <div>골라준 사람</div>
+                  {answer_2.votingCount}
+                </Card.Footer>
+              )}
             </Card>
-        </Col>
-      </Row>
-      <Row className="deleteButton ">{props.currentUser === props.userId ? deleteAndUpdateButton : ""}</Row>
-      </div>
-      </CardDeck>
-    </div>
-    </>
+          </Col>
+        </Row>
+      </Card.Body>
+      {isCurrentUser && <Card.Footer>{deleteAndUpdateButton}</Card.Footer>}
+      <Link to="/newQuestion">
+        <Button variant="primary" className="floatingButton">
+          <span className="buttonInside m-0 p-0">+</span>
+        </Button>
+      </Link>
+    </Card>
   );
-  
-  return <div>{eachQuestion}</div>;
-}
+};
 
 export default Question;

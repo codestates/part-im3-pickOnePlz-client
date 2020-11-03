@@ -27,27 +27,14 @@ function App() {
         </header>
         <main>
           <Switch>
-            <div>
-              <Route path="/mypage" component={MypageContainer} />
-              <Route path="/login" component={LoginContainer} />
-              <Route path="/signup" component={SignupContainer} />
-              <Route path="/newQuestion" component={NewQuestionContainer} />
-              <Route exact path="/" component={QuestionContainer} />
-            </div>
+            <Route path="/mypage" component={MypageContainer} />
+            <Route path="/login" component={LoginContainer} />
+            <Route path="/signup" component={SignupContainer} />
+            <Route path="/newQuestion" component={NewQuestionContainer} />
+            <Route exact path="/" component={QuestionContainer} />
           </Switch>
-          <div>
-            {isLoggedIn ? (
-              <Link to="/newQuestion">
-                <Button variant="primary" className="floatingButton">
-                  <span className="buttonInside">+</span>
-                </Button>
-              </Link>
-            ) : (
-              <div></div>
-            )}
-          </div>
         </main>
-        <footer>01057435437</footer>
+        <footer></footer>
       </Router>
     </div>
   );

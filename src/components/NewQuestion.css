@@ -1,5 +1,5 @@
 .newQuestionForm {
-  width: 500px;
+  width: 320px;
   padding-top: 30px;
   border-top: 1px solid #ddd;
   box-sizing: content-box;
@@ -12,5 +12,4 @@
 
 .inputbox {
   resize: none;
-  margin: 15px;
 }
