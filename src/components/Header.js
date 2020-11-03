@@ -9,7 +9,7 @@ const Header = ({ handleLogout }) => {
     <>
       <Nav>
         <Nav.Link href="/login">로그인</Nav.Link>
-        {/* <Nav.Link href="/signup">회원가입</Nav.Link> */}
+        <Nav.Link href="/signup">회원가입</Nav.Link>
       </Nav>
     </>
   );
@@ -17,11 +17,8 @@ const Header = ({ handleLogout }) => {
   const logoutMypageView = (
     <>
       <Nav>
-        <NavDropdown title="내 계정">
-          <NavDropdown.Item href="/mypage">마이 페이지</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item onClick={handleLogout}>로그아웃</NavDropdown.Item>
-        </NavDropdown>
+        <Nav.Link href="/mypage">마이페이지</Nav.Link>
+        <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link>
       </Nav>
     </>
   );
@@ -37,13 +34,12 @@ const Header = ({ handleLogout }) => {
   return (
     <Navbar
       collapseOnSelect
-      expand="sm"
-      bg="dark"
       variant="dark"
       className="justify-content-between"
+      style={{ background: "#d7385e" }}
     >
       <Container>
-        <Navbar.Brand href="/">하나만 골라죠</Navbar.Brand>
+        <Navbar.Brand href="/">골라죠</Navbar.Brand>
         {currentView}
       </Container>
     </Navbar>

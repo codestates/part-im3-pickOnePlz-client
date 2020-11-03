@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import {
   questionListStart,
   questionListSuccess,
@@ -127,25 +127,26 @@ const QuestionContainer = ({ history }) => {
           currentUser={loginState.status.currentUser}
           // ownership={memo.writer === this.props.currentUser} // 변형 필요 : 로그인한 사람의 것인지 구별할 때 필요할 듯?
         />
-        
       );
     });
   };
-  let view =
-  <Link to="/newQuestion">
-  <Button variant="primary" className="floatingButton">
-    <span className="buttonInside m-0 p-0">+</span>
-  </Button>
-</Link> 
+  let view = (
+    <Link to="/newQuestion">
+      <Button variant="primary" className="floatingButton">
+        <span className="buttonInside m-0 p-0">+</span>
+      </Button>
+    </Link>
+  );
 
-  if(!loginState.status.currentUser){
-    view='';
+  if (!loginState.status.currentUser) {
+    view = "";
   }
   return (
     <>
-    {mapToComponents(questionsList)}
-    {view}
-    </>);
+      {mapToComponents(questionsList)}
+      {view}
+    </>
+  );
 };
 
 export default QuestionContainer;

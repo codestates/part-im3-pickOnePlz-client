@@ -33,7 +33,7 @@ const NewQuestion = ({ onSubmit }) => {
 
   const inputValidation = () => {
     if (title === "" || firstAnswer === "" || secondAnswer === "") {
-      alert("정보를 입력하세요");
+      alert("고민이 없으신가요?");
       return false;
     }
     return true;
@@ -61,13 +61,17 @@ const NewQuestion = ({ onSubmit }) => {
         <h4 className="mb-5">무엇을 골라드릴까요?</h4>
         <Form className="newQuestionForm m-auto">
           <Form.Group controlId="formBasicEmail">
-            <Form.Label className="text-left">질문을 작성해주세요</Form.Label>
-            <Form.Control type="text" name="title" onChange={handleChange} />
+            <Form.Label className="text-left">고민을 작성해주세요</Form.Label>
+            <Form.Control
+              type="text"
+              name="title"
+              placeholder="오늘 뭐 먹을까요?"
+              onChange={handleChange}
+            />
           </Form.Group>
           <Row>
             <Col>
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>고민 1</Form.Label>
                 <InputGroup>
                   <InputGroup.Prepend></InputGroup.Prepend>
                   <FormControl
@@ -75,6 +79,7 @@ const NewQuestion = ({ onSubmit }) => {
                     name="firstAnswer"
                     aria-label="With textarea"
                     className="inputbox"
+                    placeholder="짜장면"
                     rows="5"
                     onChange={handleChange}
                   />
@@ -83,7 +88,6 @@ const NewQuestion = ({ onSubmit }) => {
             </Col>
             <Col>
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>고민 2</Form.Label>
                 <InputGroup>
                   <InputGroup.Prepend></InputGroup.Prepend>
                   <FormControl
@@ -91,6 +95,7 @@ const NewQuestion = ({ onSubmit }) => {
                     name="secondAnswer"
                     aria-label="With textarea"
                     className="inputbox"
+                    placeholder="짬뽕"
                     rows="5"
                     onChange={handleChange}
                   />
@@ -109,7 +114,7 @@ const NewQuestion = ({ onSubmit }) => {
               }
             }}
           >
-            골라주세요!
+            골라달라고 하기
           </Button>
         </Form>
       </div>

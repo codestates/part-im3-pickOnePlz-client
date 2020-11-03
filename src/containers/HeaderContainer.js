@@ -25,7 +25,7 @@ const HeaderContainer = () => {
       .post(`${REACT_APP_URL}/users/logout`, {}, { withCredentials: true })
       .then(() => {
         dispatch(logout());
-        alert("성공적으로 로그아웃 되었습니다.");
+        alert("로그아웃되었습니다.");
         // history.push("/");
         // window.location = "http://localhost:3000";
         history.push("/");

@@ -30,12 +30,12 @@ const SignupContainer = ({ history }) => {
       )
       .then((response) => {
         dispatch(signupSuccess());
-        alert("회원가입에 성공하셨습니다!");
+        alert("회원가입되었습니다!");
         // react-router v4 에서는 라우트컴포넌트에 기본적으로 history, location, match 객체를 프롭스로 전달합니다.
         history.push("/login");
       })
       .catch((error) => {
-        alert(`회원가입에 문제가 있습니다. 다시 시도해 주세요`);
+        alert(`가입하신 적이 있으신가요? 떠올려보세요!`);
         dispatch(signupFailure(error.response));
       });
   };

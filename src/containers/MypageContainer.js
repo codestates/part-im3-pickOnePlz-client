@@ -83,7 +83,6 @@ const MyPageContainer = () => {
       )
       .then((response) => {
         dispatch(updateUserInfoSuccess());
-        // alert("사용자 정보가 성공적으로 변경되었습니다.");
         // 여기다 모달
         handleShow();
         history.push("/mypage");
@@ -117,7 +116,7 @@ const MyPageContainer = () => {
           <Modal.Header closeButton>
             <Modal.Title>회원정보 수정</Modal.Title>
           </Modal.Header>
-          <Modal.Body>회원정보 수정에 성공하셨습니다!</Modal.Body>
+          <Modal.Body>회원정보가 수정되었습니다!</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               확인

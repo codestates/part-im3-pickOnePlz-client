@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Button, Card, Row, Col, Modal } from "react-bootstrap";
 import "./Question.css";
@@ -40,14 +39,7 @@ const Question = ({
     deleteQuestion(questionId, index);
   };
 
-  const colors = [
-    "#ff4b5c",
-    "#0e918c",
-    "#fa7f72",
-    "#d7385e",
-    "#1f3c88",
-    "#625261",
-  ];
+  const colors = ["#ff4b5c", "#0e918c", "#fa7f72", "#1f3c88", "#625261"];
   let random_color_1 = colors[Math.floor(Math.random() * colors.length)];
   let random_color_2 = colors[Math.floor(Math.random() * colors.length)];
 
@@ -139,9 +131,9 @@ const Question = ({
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>질문 글 삭제하기</Modal.Title>
+          <Modal.Title>고민 삭제하기</Modal.Title>
         </Modal.Header>
-        <Modal.Body>질문 글을 삭제하시겠습니까?</Modal.Body>
+        <Modal.Body>고민을 삭제하시겠습니까?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             취소
