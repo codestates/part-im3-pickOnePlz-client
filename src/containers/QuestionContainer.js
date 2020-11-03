@@ -129,7 +129,7 @@ const QuestionContainer = ({ history }) => {
     });
   };
 
-  return <div>{mapToComponents(questionsList)}</div>;
+  return mapToComponents(questionsList);
 };
 
 export default QuestionContainer;

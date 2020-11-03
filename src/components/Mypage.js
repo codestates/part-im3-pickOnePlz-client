@@ -41,7 +41,7 @@ const Mypage = (props) => {
     if (targetName === "newPasswordConfirm") {
       setNewPasswordConfirm(e.target.value);
     }
-  }
+  };
 
   // 개선점 3 : 비밀번호 수정과 닉네임 수정이 각각 다른 버튼으로 존재함
   // 이러다보니 분기 처리가 필요하게 되고, 사용자는 전체 값을 한번에 바꾸고 싶을 수도 있는데 이에 대응하지 못함
@@ -82,23 +82,23 @@ const Mypage = (props) => {
         }
       }
     }
-  }
+  };
 
   return (
     <div className="py-5">
       <h4 className="mb-5">마이페이지 </h4>
       <Form className="mypageForm m-auto">
         <Form.Group as={Row} controlId="formBasicEmail">
-          <Form.Label column sm={5} className="text-left">
+          <Form.Label column sm={4} className="text-left pr-0">
             닉네임
           </Form.Label>
-          <Col sm={7} className="pl-0">
+          <Col sm={8}>
             <Form.Control
               className="nickname"
               type="text"
               name="nickname"
               onChange={handleChange}
-              placeholder={`현재 닉네임 : ${currentNickname}`}
+              placeholder={currentNickname}
             />
           </Col>
         </Form.Group>
@@ -111,10 +111,10 @@ const Mypage = (props) => {
           닉네임 수정하기
         </Button>
         <Form.Group as={Row} controlId="formBasicPassword">
-          <Form.Label column sm={5} className="text-left">
+          <Form.Label column sm={4} className="text-left pr-0">
             기존 비밀번호
           </Form.Label>
-          <Col sm={7} className="pl-0">
+          <Col sm={8}>
             <Form.Control
               className="oldPassword"
               type="password"
@@ -124,10 +124,10 @@ const Mypage = (props) => {
           </Col>
         </Form.Group>
         <Form.Group as={Row} controlId="formBasicPassword">
-          <Form.Label column sm={5} className="text-left">
+          <Form.Label column sm={4} className="text-left pr-0">
             새 비밀번호
           </Form.Label>
-          <Col sm={7} className="pl-0">
+          <Col sm={8}>
             <Form.Control
               className="newPassword"
               type="password"
@@ -137,10 +137,10 @@ const Mypage = (props) => {
           </Col>
         </Form.Group>
         <Form.Group as={Row} controlId="formBasicPassword">
-          <Form.Label column sm={5} className="text-left">
+          <Form.Label column sm={4} className="text-left pr-0">
             새 비밀번호 확인
           </Form.Label>
-          <Col sm={7} className="pl-0">
+          <Col sm={8}>
             <Form.Control
               className="newPasswordConfirm"
               type="password"
@@ -160,5 +160,5 @@ const Mypage = (props) => {
       </Form>
     </div>
   );
-}
+};
 export default Mypage;

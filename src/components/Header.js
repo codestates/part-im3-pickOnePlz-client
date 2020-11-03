@@ -48,6 +48,6 @@ const Header = ({ handleLogout }) => {
       </Container>
     </Navbar>
   );
-}
+};
 
 export default Header;

@@ -1,64 +1,48 @@
-.questionBox {
-  border: 1px solid black;
-  padding: 10px;
-  width: 500px;
+.question {
+  width: 320px;
 }
 
-.deleteButton {
-  left: unset;
-  right: 0;
-  float: right;
-  margin-top: 10px;
-  margin-right: 10px;
+.question .card-header {
+  border-bottom: 0;
 }
 
-.qwer {
-  font-size: 15px;
+.answer {
+  border: 0;
+  cursor: pointer;
 }
 
-/* .eachQuestion__mainPage {
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 1px solid red;
+.answer .card-body {
+  border-radius: 2.5px;
+  color: white;
 }
 
-.questionTitle__mainPage {
-  border: 1px solid blue;
-  margin: 5px;
+.answer .card-footer {
+  background: #fbf7f0;
+  font-size: 12px;
+  border-top: 0;
 }
 
-.allAnswers__mainPage {
-  border: 1px solid blue;
-  margin: 5px;
+.floatingButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #212529;
+  border-radius: 50px;
+  border-color: #212529;
+  color: #fff;
+  box-shadow: 2px 2px 3px #999;
+  line-height: 0;
 }
 
-.answer__mainPage {
-  display: inline-block;
-  margin: 5px;
-  border: 1px solid red;
-  width: 40%;
-  height: 100px;
+.floatingButton:hover {
+  background: #555555;
+  border-color: #555555;
 }
 
-.description__mainPage {
-  border: 1px solid blue;
-  margin: 5px;
+.buttonInside {
+  font-size: 30px;
+  font-weight: bolder;
 }
 
-.buttons__mainPage {
-  display: inline-block;
-  border: 1px solid blue;
-  margin-left: 40%;
-}
-
-.editButton {
-  float: right;
-  margin: 5px;
-}
-
-.deleteButton {
-  float: right;
-  margin: 5px;
-} */

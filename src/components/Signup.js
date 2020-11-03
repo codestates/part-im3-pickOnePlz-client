@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "./Signup.css";
 
-const Signup = (props) => {
+const Signup = ({ handleRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -21,7 +21,7 @@ const Signup = (props) => {
     if (targetName === "passwordConfirm") {
       setPasswordConfirm(e.target.value);
     }
-  }
+  };
 
   const postSignupReq = () => {
     if (password === "") {
@@ -37,29 +37,29 @@ const Signup = (props) => {
           "비밀번호가 조건에 맞지 않습니다. 8~12글자 사이의 영문 대소문자와 숫자의 조합으로 구성하세요."
         );
       } else {
-        props.handleRegister(email, password);
+        handleRegister(email, password);
         return false;
       }
     }
-  }
+  };
 
   return (
     <div className="py-5">
       <h4 className="mb-5">회원가입</h4>
       <Form className="SignupForm m-auto">
         <Form.Group as={Row} controlId="formBasicEmail">
-          <Form.Label column sm={5} className="text-left">
+          <Form.Label column sm={4} className="text-left pr-0">
             이메일
           </Form.Label>
-          <Col sm={7} className="pl-0">
+          <Col sm={8}>
             <Form.Control type="email" name="email" onChange={handleChange} />
           </Col>
         </Form.Group>
         <Form.Group as={Row} controlId="formBasicPassword">
-          <Form.Label column sm={5} className="text-left">
+          <Form.Label column sm={4} className="text-left pr-0">
             비밀번호
           </Form.Label>
-          <Col sm={7} className="pl-0">
+          <Col sm={8}>
             <Form.Control
               type="password"
               name="password"
@@ -68,10 +68,10 @@ const Signup = (props) => {
           </Col>
         </Form.Group>
         <Form.Group as={Row} controlId="formBasicPassword">
-          <Form.Label column sm={5} className="text-left">
+          <Form.Label column sm={4} className="text-left pr-0">
             비밀번호 확인
           </Form.Label>
-          <Col sm={7} className="pl-0">
+          <Col sm={8}>
             <Form.Control
               type="password"
               name="passwordConfirm"
@@ -85,7 +85,7 @@ const Signup = (props) => {
           type="button"
           onClick={postSignupReq}
         >
-          로그인
+          가입하기
         </Button>
       </Form>
       <div className="loginLink mx-auto mt-4 text-right">
@@ -93,7 +93,7 @@ const Signup = (props) => {
       </div>
     </div>
   );
-}
+};
 
 Signup.propTypes = {
   mode: PropTypes.bool,
