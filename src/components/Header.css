@@ -2,8 +2,16 @@
   border-bottom: 1px solid #ccc;
 }
 
-.Header .dropdown-menu {
-  left: unset;
-  right: 0;
-  min-width: 7rem;
+.navbar-dark .navbar-brand {
+  background: #d7385e;
+  color: #fff;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+.navbar-dark .navbar-brand:hover {
+  background: #fff;
+  color: #d7385e;
 }

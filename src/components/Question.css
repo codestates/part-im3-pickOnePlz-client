@@ -1,14 +1,17 @@
 .question {
   width: 320px;
+  border: 0;
+  box-shadow: 1px 1px 1px 1px #ccc;
 }
 
-.question .card-header {
-  border-bottom: 0;
+.question .card-header, .question .card-footer {
+  border: 0;
 }
 
 .answer {
   border: 0;
   cursor: pointer;
+  box-shadow: 1px 1px 1px 1px #ccc;
 }
 
 .answer .card-body {
@@ -26,23 +29,30 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 60px;
-  height: 60px;
-  background: #212529;
+  width: 55px;
+  height: 55px;
+  background: #d7385e;
   border-radius: 50px;
-  border-color: #212529;
+  border-color: #d7385e;
+  box-shadow: 1px 1px 1px 1px #ccc;
   color: #fff;
-  box-shadow: 2px 2px 3px #999;
   line-height: 0;
 }
 
+@media (min-width: 568px) {
+  .floatingButton {
+    right: 20%;
+  }
+}
+
 .floatingButton:hover {
-  background: #555555;
-  border-color: #555555;
+  background: #fff;
+  border-color: #fff;
+  color: #d7385e;
 }
 
 .buttonInside {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bolder;
 }
 

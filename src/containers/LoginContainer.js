@@ -57,7 +57,7 @@ const LoginContainer = ({ history, cookies }) => {
         history.push("/");
       })
       .catch((error) => {
-        alert(`로그인에 문제가 있습니다. 다시 시도해 주세요`);
+        alert(`이메일 혹은 비밀번호가 잘못되었습니다. 떠올려보세요!`);
         dispatch(loginFailure(error.response));
       });
   };
