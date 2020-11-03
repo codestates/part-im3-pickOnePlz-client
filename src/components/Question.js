@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button, Card, Row, Col } from "react-bootstrap";
+import { Button, Card, Row, Col, Modal } from "react-bootstrap";
 import "./Question.css";
 
 const Question = ({
@@ -18,6 +18,11 @@ const Question = ({
   userId,
   votingQuestion,
 }) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const { isLoggedIn } = useSelector((state) => state.loginLogout.status);
 
   const isCurrentUser = userId ? true : false;
@@ -50,7 +55,8 @@ const Question = ({
       className="w-100"
       variant="outline-danger"
       type="button"
-      onClick={handleDeleteReq}
+      onClick={handleShow}
+      //onClick={모달을 띄우는 버튼}  => 그 버튼 안에서 handleDeleteReq / 취소버튼도
     >
       삭제하기
     </Button>
@@ -119,6 +125,21 @@ const Question = ({
         </Row>
       </Card.Body>
       {isCurrentUser && <Card.Footer>{deleteAndUpdateButton}</Card.Footer>}
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>질문 글 삭제하기</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>질문 글을 삭제하시겠습니까?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            취소
+          </Button>
+          <Button variant="secondary" onClick={handleDeleteReq}>
+            확인
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Card>
   );
 };
