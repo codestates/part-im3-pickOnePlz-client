@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Button, Card, Row, Col, Modal } from "react-bootstrap";
 import "./Question.css";
 
@@ -25,10 +26,11 @@ const Question = ({
 
   const { isLoggedIn } = useSelector((state) => state.loginLogout.status);
 
-  const isCurrentUser = userId ? true : false;
+  const isCurrentUser = userId === currentUser;
 
   const isVotedAnswer = (answer) => answer.votes.length > 0;
 
+  const history = useHistory();
   // Main 이거 이름 별로인 듯. => Question 으로 수정함
   const handleDeleteReq = () => {
     if (currentUser === null) {
@@ -56,7 +58,6 @@ const Question = ({
       variant="outline-danger"
       type="button"
       onClick={handleShow}
-      //onClick={모달을 띄우는 버튼}  => 그 버튼 안에서 handleDeleteReq / 취소버튼도
     >
       삭제하기
     </Button>
@@ -72,7 +73,12 @@ const Question = ({
             <Card
               className="answer"
               onClick={() => {
-                votingQuestion(questionId, answer_1.id);
+                if (!isCurrentUser) {
+                  alert("로그인 후 투표해 주세요!");
+                  history.push("/login");
+                } else {
+                  votingQuestion(questionId, answer_1.id);
+                }
               }}
             >
               <Card.Body
@@ -99,7 +105,12 @@ const Question = ({
             <Card
               className="answer"
               onClick={() => {
-                votingQuestion(questionId, answer_2.id);
+                if (!isCurrentUser) {
+                  alert("로그인 후 투표해 주세요!");
+                  history.push("/login");
+                } else {
+                  votingQuestion(questionId, answer_2.id);
+                }
               }}
             >
               <Card.Body
