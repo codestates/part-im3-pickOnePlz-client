@@ -17,7 +17,6 @@ import "./App.css";
 
 function App() {
   const { isLoggedIn } = useSelector((state) => state.loginLogout.status);
-  console.log(isLoggedIn);
 
   return (
     <div className="App">
