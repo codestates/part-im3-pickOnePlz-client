@@ -33,7 +33,7 @@ const Login = ({ handleLogin }) => {
       //   }
       // });
     }
-  }
+  };
 
   return (
     <div className="py-5">
@@ -41,18 +41,18 @@ const Login = ({ handleLogin }) => {
 
       <Form className="loginForm m-auto">
         <Form.Group as={Row} controlId="formBasicEmail">
-          <Form.Label column sm={4} className="text-left">
+          <Form.Label column sm={3} className="text-left pr-0">
             이메일
           </Form.Label>
-          <Col sm={8} className="pl-0">
+          <Col sm={9}>
             <Form.Control type="email" name="email" onChange={handleChange} />
           </Col>
         </Form.Group>
         <Form.Group as={Row} controlId="formBasicPassword">
-          <Form.Label column sm={4} className="text-left">
+          <Form.Label column sm={3} className="text-left pr-0">
             비밀번호
           </Form.Label>
-          <Col sm={8} className="pl-0">
+          <Col sm={9}>
             <Form.Control
               type="password"
               name="password"
@@ -76,6 +76,6 @@ const Login = ({ handleLogin }) => {
       </div>
     </div>
   );
-}
+};
 
 export default Login;
