@@ -20,7 +20,7 @@ const Question = ({
 }) => {
   const { isLoggedIn } = useSelector((state) => state.loginLogout.status);
 
-  const isCurrentUser = currentUser === userId;
+  const isCurrentUser = userId ? true : false;
 
   const isVotedAnswer = (answer) => answer.votes.length > 0;
 
@@ -119,11 +119,6 @@ const Question = ({
         </Row>
       </Card.Body>
       {isCurrentUser && <Card.Footer>{deleteAndUpdateButton}</Card.Footer>}
-      <Link to="/newQuestion">
-        <Button variant="primary" className="floatingButton">
-          <span className="buttonInside m-0 p-0">+</span>
-        </Button>
-      </Link>
     </Card>
   );
 };
