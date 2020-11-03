@@ -33,6 +33,11 @@ const LoginContainer = ({ history, cookies }) => {
       .then((response) => {
         let loggedInUser = Number(cookies.get("session_id"));
 
+        // const { token, id } = response.data;
+        
+        // axios.defaults.headers.common['Authorization'] = `${token}`;
+
+        // dispatch(loginSuccess(id));
         dispatch(loginSuccess(loggedInUser));
         // console.log("쿠키 : ", JSON.parse(document.cookie));
         // // create session data
