@@ -1,12 +1,14 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 // 상태 조회는 useSelector, 액션 생성은 useDispatch
-import Signup from "../components/Signup";
-// import history from "../modules/history"; // 안 쓰고 처리하였기에 모듈을 지워 둠
-import { signupStart, signupSuccess, signupFailure } from "../modules/signup";
-import { Container } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+
+import axios from "axios";
 import REACT_APP_URL from "../config";
+
+import Signup from "../components/Signup";
+import { signupStart, signupSuccess, signupFailure } from "../modules/signup";
+
+import { Container } from "react-bootstrap";
 
 const SignupContainer = ({ history }) => {
   const state = useSelector(

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "./css/Signup.css";
 

@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import REACT_APP_URL from "../config";
 
 import axios from "axios";
+import REACT_APP_URL from "../config";
 
 import Header from "../components/Header";
 import { logout } from "../modules/loginLogout";
