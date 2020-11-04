@@ -8,7 +8,6 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import "./css/NewQuestion.css";
 
 const NewQuestion = ({ onSubmit }) => {

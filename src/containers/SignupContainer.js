@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 // 상태 조회는 useSelector, 액션 생성은 useDispatch
@@ -12,9 +12,14 @@ const SignupContainer = ({ history }) => {
   const state = useSelector(
     (state) =>
       // useSelector : redux store 안의 값들을 읽어온다. (selector function 을 전달하여, Context에 포함된 state 를 가져올 수 있다.)
-      state.signup, // reducer 함수를 넣어줘야 하는 듯
+      state.loginLogout, // reducer 함수를 넣어줘야 하는 듯
     []
   );
+
+  if (state.status.currentUser) {
+    // 누군가 로그인한 상태라면 /signup 위지로의 접근을 막음
+    history.push("/");
+  }
 
   const dispatch = useDispatch();
   // Context에 포함된 dispatch 를 가져올 수 있다. 이 dispatch 를 이용해 action 을 발생시킨다.
