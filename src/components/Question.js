@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Button, Card, Row, Col, Modal } from "react-bootstrap";
-import "./Question.css";
+import "./css/Question.css";
 
 const Question = ({
   answer_1,
