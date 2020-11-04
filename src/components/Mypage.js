@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import "./Mypage.css";
+import "./css/Mypage.css";
 
 const Mypage = (props) => {
   const [nickname, setNickname] = useState("");

@@ -9,7 +9,7 @@ import {
   FormControl,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./NewQuestion.css";
+import "./css/NewQuestion.css";
 
 const NewQuestion = ({ onSubmit }) => {
   const { currentUser } = useSelector((state) => state.loginLogout.status);

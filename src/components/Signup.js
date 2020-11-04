@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import "./Signup.css";
+import "./css/Signup.css";
 
 const Signup = ({ handleRegister }) => {
   const [email, setEmail] = useState("");
