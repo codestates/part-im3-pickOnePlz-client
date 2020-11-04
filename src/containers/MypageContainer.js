@@ -91,7 +91,6 @@ const MyPageContainer = () => {
         // alert이 없으면 닉네임은 변경된 값이 곧바로 적용되어 렌더링되지 않고 있음 (변경 자체는 잘 된다.)
       })
       .catch((error) => {
-        console.log("error : ", error);
         dispatch(updateUserInfoFailure());
       });
   };

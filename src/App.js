@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { useSelector } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import {
@@ -15,8 +14,6 @@ import {
 import "./App.css";
 
 function App() {
-  const { isLoggedIn } = useSelector((state) => state.loginLogout.status);
-
   return (
     <div className="App">
       <Router>

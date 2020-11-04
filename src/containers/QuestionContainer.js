@@ -32,24 +32,6 @@ const QuestionContainer = ({ history }) => {
       state.loginLogout, // reducer 함수를 넣어줘야 하는 듯
     []
   );
-  const votingQuestion = async (_questionId, _answerId) => {
-    const setData = {
-      userId: currentUser,
-      questionId: _questionId,
-      answerId: _answerId,
-    };
-    const response = await axios
-      .post(`${REACT_APP_URL}/votes`, setData, {
-        withCredentials: true,
-      })
-      .then(({ data }) => {
-        getAllQuestions();
-        // alert(data);
-      })
-      .catch((error) => {
-        alert(error.response.data);
-      });
-  };
 
   const dispatch = useDispatch();
 
@@ -76,9 +58,24 @@ const QuestionContainer = ({ history }) => {
       });
   };
 
-  // getVotes 필요한 듯
-  // data : [{ q a}  { q a}  { q a} { q a}]
-  // 그러므로, 겟 요청 2개 하고, 그다음에 투표 {u q a} 기능 구현해야 할 것임
+  const votingQuestion = async (_questionId, _answerId) => {
+    const setData = {
+      userId: currentUser,
+      questionId: _questionId,
+      answerId: _answerId,
+    };
+    const response = await axios
+      .post(`${REACT_APP_URL}/votes`, setData, {
+        withCredentials: true,
+      })
+      .then(({ data }) => {
+        getAllQuestions();
+        // alert(data);
+      })
+      .catch((error) => {
+        alert(error.response.data);
+      });
+  };
 
   const deleteQuestion = (questionId, index) => {
     dispatch(questionRemoveStart());
@@ -92,6 +89,7 @@ const QuestionContainer = ({ history }) => {
         }
       )
       .then((response) => {
+        console.log("response : ", response.data); // 성공적으로 삭제하였습니다. 라는 서버의 메세지를 출력한다.
         dispatch(questionRemoveSuccess(index));
         history.push("/");
       })

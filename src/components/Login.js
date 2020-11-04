@@ -26,12 +26,6 @@ const Login = ({ handleLogin }) => {
       alert("비밀번호를 입력하지 않으셨습니다. 비밀번호를 입력해 주세요.");
     } else {
       handleLogin(email, password);
-      // props.handleLogin(email, password).then((result) => {
-      //   if (!result) {
-      //     setEmail("");
-      //     setPassword("");
-      //   }
-      // });
     }
   };
 

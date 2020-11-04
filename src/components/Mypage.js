@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "./css/Mypage.css";
 
@@ -8,9 +7,6 @@ const Mypage = (props) => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
-
-  // props.nickname
-  const history = useHistory();
 
   // 개선점 1 : let currentNickname = props.nickname;  :  닉네임 아직 없는 경우, 이 값이 null이라 표시 안 됨
   // API에서는 '골라죠01'로 적혀있는데, 랜덤 닉네임 생성이 아직 처리되지 않은 것인가?

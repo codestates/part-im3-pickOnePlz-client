@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 // 상태 조회는 useSelector, 액션 생성은 useDispatch
 import { useSelector, useDispatch } from "react-redux";
 import { instanceOf } from "prop-types";
@@ -37,11 +37,11 @@ const LoginContainer = ({ history, cookies }) => {
       .then((response) => {
         let loggedInUser = Number(cookies.get("session_id"));
 
+        // jwt 적용을 위한 시도
         // const { token, id } = response.data;
-
         // axios.defaults.headers.common['Authorization'] = `${token}`;
 
-        // dispatch(loginSuccess(id));
+        // dispatch(loginSuccess(id));  // 이렇게 받아오는 편이 더 명시적이고 깔끔하지 않나 싶은데, 쿠키를 사용하지 않는다는 점에서는 문제일 듯
         dispatch(loginSuccess(loggedInUser));
         // console.log("쿠키 : ", JSON.parse(document.cookie));
         // // create session data

@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import REACT_APP_URL from "../config";
@@ -16,6 +16,8 @@ const HeaderContainer = () => {
     []
   );
 
+  let currentUser = state.status.currentUser;
+
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -26,13 +28,11 @@ const HeaderContainer = () => {
       .then(() => {
         dispatch(logout());
         alert("로그아웃되었습니다.");
-        // history.push("/");
-        // window.location = "http://localhost:3000";
         history.push("/");
       });
   };
 
-  return <Header handleLogout={handleLogout} />;
+  return <Header handleLogout={handleLogout} currentUser={currentUser} />;
 };
 
 export default HeaderContainer;
