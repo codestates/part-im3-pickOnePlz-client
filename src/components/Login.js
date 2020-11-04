@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "./css/Login.css";
 
@@ -20,7 +21,6 @@ const Login = ({ handleLogin }) => {
     }
   }
 
-  // 아직 덜 됨
   const postLoginReq = () => {
     if (password === "") {
       alert("비밀번호를 입력하지 않으셨습니다. 비밀번호를 입력해 주세요.");

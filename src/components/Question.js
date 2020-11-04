@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 import { Button, Card, Row, Col, Modal } from "react-bootstrap";
 import "./css/Question.css";
 
@@ -30,7 +31,7 @@ const Question = ({
   const isVotedAnswer = (answer) => answer.votes.length > 0;
 
   const history = useHistory();
-  // Main 이거 이름 별로인 듯. => Question 으로 수정함
+
   const handleDeleteReq = () => {
     if (currentUser === null) {
       console.log("로그인이 되어있지 않습니다.");

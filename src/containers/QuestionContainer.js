@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
+import axios from "axios";
+import REACT_APP_URL from "../config";
+
+import Question from "../components/Question";
 import {
   questionListStart,
   questionListSuccess,
@@ -10,15 +14,12 @@ import {
   questionRemoveSuccess,
   questionRemoveFailure,
 } from "../modules/getQuestionsList";
-import REACT_APP_URL from "../config";
 
-import axios from "axios";
-
-import Question from "../components/Question";
+import { Button } from "react-bootstrap";
 
 const QuestionContainer = ({ history }) => {
   const { currentUser } = useSelector((state) => state.loginLogout.status);
-  // MainContainer 이거 이름 별로인 듯. => QuestionContainer 로 수정함
+
   const questionState = useSelector(
     (state) =>
       // useSelector : redux store 안의 값들을 읽어온다. (selector function 을 전달하여, Context에 포함된 state 를 가져올 수 있다.)

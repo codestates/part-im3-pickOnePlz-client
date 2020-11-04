@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Container } from "react-bootstrap";
+
+import axios from "axios";
+import REACT_APP_URL from "../config";
+
+import Mypage from "../components/Mypage";
 import {
   getUserInfoStart,
   getUserInfoSuccess,
@@ -10,12 +14,8 @@ import {
   updateUserInfoSuccess,
   updateUserInfoFailure,
 } from "../modules/handleUserInfo";
-import REACT_APP_URL from "../config";
 
-import axios from "axios";
-
-import { Modal, Button } from "react-bootstrap";
-import Mypage from "../components/Mypage";
+import { Container, Modal, Button } from "react-bootstrap";
 
 const MyPageContainer = () => {
   const userInfoState = useSelector(

@@ -1,6 +1,7 @@
 import React from "react";
-import "./css/Header.css";
+
 import { Container, Navbar, Nav } from "react-bootstrap";
+import "./css/Header.css";
 
 const Header = ({ handleLogout, currentUser }) => {
   const loginSignupView = (

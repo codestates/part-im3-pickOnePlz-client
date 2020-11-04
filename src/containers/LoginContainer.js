@@ -3,13 +3,14 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { instanceOf } from "prop-types";
 import { withCookies, Cookies } from "react-cookie";
-import { Container } from "react-bootstrap";
-import REACT_APP_URL from "../config";
 
 import axios from "axios";
+import REACT_APP_URL from "../config";
 
 import Login from "../components/Login";
 import { loginStart, loginSuccess, loginFailure } from "../modules/loginLogout";
+
+import { Container } from "react-bootstrap";
 
 const LoginContainer = ({ history, cookies }) => {
   const state = useSelector(
