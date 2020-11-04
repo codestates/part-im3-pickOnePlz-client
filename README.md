@@ -1,70 +1,53 @@
-브랜치 수정-> 수정
+## 1. 골라죠 [Pick One Plz] - Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+&nbsp;선택의 갈림길에서 고민이 되신다면, 골라죠에서 다른 분들의 선택을 받아보세요!
 
-## Available Scripts
+&nbsp;자유롭게 고민 글을 올리시고 다른 분들의 의견을 받아보시거나, 다른 분들의 고민 글에도 직접 투표하실 수 있습니다.
 
-In the project directory, you can run:
+&nbsp;'골라죠' 서비스는 https://golazo.me 에서 만나보실 수 있습니다.
 
-### `yarn start`
+---
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br>
+<br>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 2. 프로젝트 환경
 
-### `yarn test`
+&nbsp;이번 프로젝트(client)는 아래와 같은 환경에서 작성/실행되었습니다.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ubuntu 20.04 LTS
+- Google Chrome Version 85.0.4183.121 (64-bit)
+- create-react-app
+- react / react-router-dom
+- redux / react-redux
+- bootstrap / react-bootstrap
+- AWS S3
 
-### `yarn build`
+---
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br>
+<br>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## 3. 설치 및 실행
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+&nbsp;이 프로젝트(client)는 npm을 활용하여 구성되었으므로, 아래 명령어를 통해 의존 모듈을 설치하고 프로젝트를 실행하시기 바랍니다.
 
-### `yarn eject`
+- 설치 : `$ npm install`
+- 실행 : `$ npm start`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 4. 사용 방법
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+&nbsp;서비스의 사용을 위해서는 회원가입 및 로그인이 필요합니다.
 
-## Learn More
+&nbsp;우측 상단의 해당 기능을 활용하여 회원가입과 로그인을 마치신 후, https://golazo.me 메인 페이지의 우측 하단에서 새로운 고민 글을 작성해 보세요!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+&nbsp;메인 페이지에서 나열되는 다른 분들의 고민 글도 읽어보시고, 흥미로운 선택지에 투표해 보세요.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+&nbsp;내가 작성한 고민 글에 다른 분들이 투표해 주신 상황도 참고하실 수 있습니다.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+&nbsp;로그인하신 상태라면, 우측 상단에서 '마이페이지'로 접속하시고, 닉네임과 비밀번호를 변경하실 수 있습니다.
